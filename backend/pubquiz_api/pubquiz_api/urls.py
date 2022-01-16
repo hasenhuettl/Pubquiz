@@ -25,3 +25,8 @@ from pubquiz.urls import router
 from rest_framework_jwt.views import obtain_jwt_token, ObtainJSONWebToken
 from django.contrib.auth.models import User
 
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api-token-auth/', obtain_jwt_token),
+    path('', include(router.urls))
+]
