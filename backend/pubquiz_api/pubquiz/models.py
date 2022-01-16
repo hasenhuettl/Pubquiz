@@ -24,10 +24,9 @@ class Question(models.Model):
     master_answer = models.CharField(max_length=1024, null=True)
 
 
-"""
+
 class UserAnswer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.PROTECT, null=True)
-    created_by_user = models.ForeignKey(QuizMaster, on_delete=models.PROTECT, related_name="answer_created_by_user", null=True)
+    #created_by_user = models.ForeignKey(QuizMaster, on_delete=models.PROTECT, related_name="answer_created_by_user", null=True)
     #user = models.ForeignKey(django.contrib.auth.models.User)
     user_answer = models.CharField(max_length=1024)
-"""

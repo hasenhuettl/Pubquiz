@@ -141,15 +141,61 @@ class QuestionViewSet(viewsets.ViewSet):
         return Response(status=204)
 
 
-"""
-class UserAnswerViewSet(viewsets.ViewSet):
 
+class UserAnswerViewSet(viewsets.ViewSet):
+    # GET http://127.0.0.1:8000/userAnswer/
     def list(self, request, format=None):
-        queryset = models.Quiz.objects.all()
-        serializer = serializers.UserSerializer(queryset, many=True)
+        queryset = models.UserAnswer.objects.all()
+        serializer = serializers.UserAnswerSerializer(queryset, many=True)
         return Response(serializer.data, status=200)
 
+    # GET http://127.0.0.1:8000/userAnswer/
+    def create(self, request, format=None):
+        # if request.user.is_superuser:
+        user_answer = models.UserAnswer.objects.create(
+            # created_by_user=request.data["created_by_user"],
+            question=models.Question.objects.get(id=request.data["question"]),
+            #question_string=request.data["question_string"],
+            user_answer=request.data["user_answer"]
+        )
+        user_answer.save()
+        serializer = serializers.UserAnswerSerializer(user_answer)
+        return Response(serializer.data, status=200)
 
+    #GET http://127.0.0.1:8000/userAnswer/id
+    def retrieve(self, request, pk=None, format=None):
+        try:
+            user_answer = models.UserAnswer.objects.get(pk=pk)
+            serializer = serializers.UserAnswerSerializer(user_answer)
+            return Response(serializer.data, status=200)
+
+        except models.Quiz.DoesNotExist:
+            return Response({"error": "Question does not exist"}, status=404)
+
+    # PUT http://127.0.0.1:8000/question/id
+    def update(self, request, pk=None, format=None):
+        try:
+            user_answer = models.UserAnswer.objects.get(pk=pk)
+            user_answer.user_answer = request.data["user_answer"]
+            #question.master_answer = request.data["master_answer"]
+            #question.save()
+            serializer = serializers.UserAnswerSerializer(user_answer)
+            return Response(serializer.data, status=200)
+
+        except models.Quiz.DoesNotExist:
+            return Response(status=404)
+
+    def partial_update(self, request, pk=None, format=None):
+        # We do not allow partial updates here
+        # So we return a 405 instead.
+        return Response(status=405)
+
+    # DELETE http://127.0.0.1:8000/question/id
+    def destroy(self, request, pk=None, format=None):
+        models.UserAnswer.objects.filter(pk=pk).delete()
+        return Response(status=204)
+
+"""
 class QuizMasterViewSet(viewsets.ViewSet):
 
     # GET: http://127.0.0.1:8000/users/

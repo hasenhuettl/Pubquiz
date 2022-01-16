@@ -25,15 +25,15 @@ class UserSerializer(serializers.ModelSerializer):
         model = models.QuizMaster
         fields = ('id', 'username', 'first_name', 'last_name', 'date_joined', 'birthday', 'bio', 'profile_image')
 
-
+"""
 
 
 
 class UserAnswerSerializer(serializers.ModelSerializer):
     question = QuestionSerializer()
-    created_by_user = UserSerializer()
+    #created_by_user = UserSerializer()
 
     class Meta:
         model = models.UserAnswer
         fields = '__all__'
-        """
+
