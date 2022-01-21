@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
-import {QuizService} from "../services/quiz.service";
+import {Quiz,QuizService} from "../services/quiz.service";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 
-class ImageSnippet {
+/**class ImageSnippet {
   constructor(public src: string, public file: File) {}
-}
+}**/
 
 @Component({
-  selector: 'app-sport-form',
+  selector: 'app-quiz-form',
   templateUrl: './quiz-form.component.html',
   styleUrls: ['./quiz-form.component.scss']
 })
@@ -21,18 +21,18 @@ export class QuizFormComponent implements OnInit {
 
   quizFormGroup: FormGroup;
   submitButtonText = '';
-  selectedFile: ImageSnippet | undefined;
+ // selectedFile: ImageSnippet | undefined;
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router,
-    private sportService: QuizService,
+    private quizService: QuizService,
     private snackbar: MatSnackBar
   ) {
     this.quizFormGroup = new FormGroup({
       id: new FormControl(null),
       name: new FormControl('', [Validators.required], [this.nameValidator()]),
-      description: new FormControl('', [Validators.required])
+      //description: new FormControl('', [Validators.required])
       }
     )
   }
@@ -41,27 +41,27 @@ export class QuizFormComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.submitButtonText = 'Update';
-      this.sportService.getSport(id).subscribe(sport => { this.quizFormGroup.patchValue(sport) });
+      this.quizService.getQuiz(id).subscribe(quiz => { this.quizFormGroup.patchValue(quiz) });
     } else {
       this.submitButtonText = 'Create';
     }
   }
 
-  createOrUpdateSport() {
+  createOrUpdateQuiz() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.sportService.updateSport(this.quizFormGroup.value).subscribe(() => {
+      this.quizService.updateQuiz(this.quizFormGroup.value).subscribe(() => {
        this.snackbar.open('Sport updated successfully!', 'OK',{duration:3000})
       })
-      this.router.navigate(['/sport-list']);
+      this.router.navigate(['/quiz-list']);
     } else {
-      this.sportService.createSport(this.quizFormGroup.value).subscribe(() => {
-        this.snackbar.open('Sport created successfully!', 'OK',{duration:3000})
+      this.quizService.createQuiz(this.quizFormGroup.value).subscribe(() => {
+        this.snackbar.open('Quiz created successfully!', 'OK',{duration:3000})
       })
-      this.router.navigate(['/sport-list']);
+      this.router.navigate(['/quiz-list']);
     }
   }
-  uploadImage(image: File) {
+  /**uploadImage(image: File) {
     const formData = new FormData();
     formData.append('image', image);
     formData.append('name', this.quizFormGroup.value.name);
@@ -69,21 +69,21 @@ export class QuizFormComponent implements OnInit {
     console.log(image)
 
     return this.http.post('/api/sports/', formData);
-  }
+  }**/
 
   // Validators
   nameValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
-      return this.sportService.getSports().pipe(map(sports => {
+      return this.quizService.getQuizzes().pipe(map(quizzes => {
         const currentId = this.quizFormGroup.controls['id'].value;
-        const currentName = this.quizFormGroup.controls['name'].value;
-        const existingSport = sports.find(sport => sport.name === currentName);
-        return existingSport && existingSport.id !== currentId ? {nameAlreadyExists: true} : null
+        const currentName = this.quizFormGroup.controls['quiz_name'].value;
+        const existingQuiz = quizzes.find(quiz => quiz.quiz_name === currentName);
+        return existingQuiz && existingQuiz.id !== currentId ? {nameAlreadyExists: true} : null
       }))
     }
   }
 
-  processFile(imageInput: any) {
+  /**processFile(imageInput: any) {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
 
@@ -101,6 +101,6 @@ export class QuizFormComponent implements OnInit {
     });
 
     reader.readAsDataURL(file);
-  }
+  }**/
 }
 

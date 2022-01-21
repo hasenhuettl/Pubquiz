@@ -8,7 +8,7 @@ import {Quiz,QuizService} from "../services/quiz.service";
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-      displayedColumns = ['id', 'quiz_name'];
+      displayedColumns = ['id', 'quiz_name','edit','delete'];
       quizzes: Quiz[] = [];
 
 
@@ -22,6 +22,9 @@ export class IndexComponent implements OnInit {
       console.log({response})
       this.quizzes = response
     })
+  }
+  deleteQuiz(quiz: Quiz): void {
+    this.quizService.deleteQuiz(quiz).subscribe( () => { this.ngOnInit() });
   }
 
 }

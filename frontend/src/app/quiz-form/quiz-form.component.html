@@ -1,40 +1,40 @@
-<form [formGroup]="sportFormGroup" (ngSubmit)="createOrUpdateSport()" class="sport-form__form">
+<form [formGroup]="quizFormGroup" (ngSubmit)="createOrUpdateQuiz()" class="quiz-form__form">
 
   <!-- Name Input Field -->
   <mat-form-field>
     <input matInput type="text" placeholder="Name" formControlName="name">
-    <mat-hint align="end">The name of the sport</mat-hint>
+    <mat-hint align="end">The name of the quiz</mat-hint>
 
-    <mat-error *ngIf="sportFormGroup.controls.name.hasError('required')">
+    <mat-error *ngIf="quizFormGroup.controls.quiz_name.hasError('required')">
       Name is required
     </mat-error>
-    <mat-error *ngIf="sportFormGroup.controls.name.hasError('nameAlreadyExists')">
-      Sport with this name already exists
+    <mat-error *ngIf="quizFormGroup.controls.quiz_name.hasError('nameAlreadyExists')">
+      Quiz with this name already exists
     </mat-error>
   </mat-form-field>
 
-  <!-- Description Input Field -->
+  <!-- Description Input Field
   <mat-form-field>
     <input matInput type="text" placeholder="Description" formControlName="description">
-    <mat-hint align="end">The description of the sport</mat-hint>
+    <mat-hint align="end">The description of the quiz</mat-hint>
 
-    <mat-error *ngIf="sportFormGroup.controls.name.hasError('required')">
+    <mat-error *ngIf="quizFormGroup.controls.name.hasError('required')">
       Description is required
     </mat-error>
-  </mat-form-field>
+  </mat-form-field>-->
 
-  <!-- Image Input Field -->
+  <!-- Image Input Field
   <p></p>
   <mat-hint>Image Upload:</mat-hint>
   <input #imageInput type="file" accept="image/*">
-  <p></p>
+  <p></p>-->
 
 
   <!-- Submit Button -->
   <mat-card-actions align="start">
-    <button mat-raised-button color="accent"  [disabled]="!sportFormGroup.valid">{{ submitButtonText }}</button>
-    <button mat-raised-button color="accent" (click)="processFile(imageInput)"[disabled]="!sportFormGroup.valid" >Upload</button>
-    <button mat-raised-button color="warn" [routerLink]="'/sport-list/'">Back</button>
+    <button mat-raised-button color="accent"  [disabled]="!quizFormGroup.valid">{{ submitButtonText }}</button>
+   <!--button mat-raised-button color="accent" (click)="processFile(imageInput)"[disabled]="!sportFormGroup.valid" >Upload</button-->
+    <button mat-raised-button color="warn" [routerLink]="'/quiz-list/'">Back</button>
   </mat-card-actions>
 
 </form>
