@@ -26,6 +26,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatBadgeModule} from '@angular/material/badge';
 import {IndexComponent} from "./index/index.component";
+import {LogoutComponent} from "./logout/logout.component";
+import {LoginComponent} from "./login/login.component";
 
 
 export function tokenGetter() {
@@ -36,6 +38,8 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     IndexComponent,
+    LoginComponent,
+    LogoutComponent,
 
   ],
   imports: [
