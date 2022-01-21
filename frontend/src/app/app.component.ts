@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "./services/user.service";
 
 @Component({
@@ -6,8 +6,10 @@ import {UserService} from "./services/user.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'frontend';
-  constructor(public userService: UserService){
+export class AppComponent  {
+  isLoggedIn = false;
+
+  constructor(public userService: UserService) {
   }
+
 }

@@ -2,12 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SportListComponent } from './sport-list/sport-list.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
-import { SportFormComponent } from './sport-form/sport-form.component';
-import { ActivityListComponent } from './activity-list/activity-list.component';
-import { ActivityFormComponent } from './activity-form/activity-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
@@ -22,19 +18,14 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSortModule} from "@angular/material/sort";
 import {MatTableModule} from "@angular/material/table";
-import { IndexComponent } from './index/index.component';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { ActivityViewComponent } from './activity-view/activity-view.component';
 import { MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
-import {DateComponent} from "./date/date.component";
 import {JwtModule} from "@auth0/angular-jwt";
-import { LoginComponent } from './login/login.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import { RegisterComponent } from './register/register.component';
-import { ProfileComponent } from './profile/profile.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatBadgeModule} from '@angular/material/badge';
+import {IndexComponent} from "./index/index.component";
 
 
 export function tokenGetter() {
@@ -44,16 +35,7 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    SportListComponent,
-    SportFormComponent,
-    ActivityListComponent,
-    ActivityFormComponent,
     IndexComponent,
-    ActivityViewComponent,
-    DateComponent,
-    LoginComponent,
-    RegisterComponent,
-    ProfileComponent,
 
   ],
   imports: [
