@@ -17,19 +17,19 @@ export class QuizService {
     this.getQuizzes().subscribe(quizzes => this.availableQuizzes = quizzes);
   }
   getQuizzes() {
-    return this.http.get<Quiz[]>(`${this.pubquizApiService.base_url}/quizzes/?order_by=name`);
+    return this.http.get<Quiz[]>(`${this.pubquizApiService.base_url}/quiz/?order_by=quiz_name`);
   }
   getQuiz(id: string) {
-    return this.http.get<Quiz>(`${this.pubquizApiService.base_url}/quizzes/${id}/`);
+    return this.http.get<Quiz>(`${this.pubquizApiService.base_url}/quiz/${id}/`);
   }
   createQuiz(quiz: Quiz) {
-    return this.http.post<Quiz>(`${this.pubquizApiService.base_url}/quizzes/`, quiz);
+    return this.http.post<Quiz>(`${this.pubquizApiService.base_url}/quiz/`, quiz);
   }
   updateQuiz(quiz: Quiz) {
-    return this.http.put<Quiz>(`${this.pubquizApiService.base_url}/quizzes/${quiz.id}/`, quiz);
+    return this.http.put<Quiz>(`${this.pubquizApiService.base_url}/quiz/${quiz.id}/`, quiz);
   }
   deleteQuiz(quiz: Quiz) {
-    return this.http.delete<Quiz>(`${this.pubquizApiService.base_url}/quizzes/${quiz.id}/`);
+    return this.http.delete<Quiz>(`${this.pubquizApiService.base_url}/quiz/${quiz.id}/`);
   }
 }
 
