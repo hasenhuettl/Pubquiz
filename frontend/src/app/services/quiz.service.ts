@@ -17,7 +17,7 @@ export class QuizService {
     this.getQuizzes().subscribe(quizzes => this.availableQuizzes = quizzes);
   }
   getQuizzes() {
-    return this.http.get<Quiz[]>(`${this.pubquizApiService.base_url}/quiz/?order_by=quiz_name`);
+    return this.http.get<Quiz[]>(`${this.pubquizApiService.base_url}/quiz/?order_by=id`);
   }
   getQuiz(id: string) {
     return this.http.get<Quiz>(`${this.pubquizApiService.base_url}/quiz/${id}/`);

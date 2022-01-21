@@ -28,6 +28,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {IndexComponent} from "./index/index.component";
 import {LogoutComponent} from "./logout/logout.component";
 import {LoginComponent} from "./login/login.component";
+import {RegisterComponent} from "./register/register.component";
 
 
 export function tokenGetter() {
@@ -40,6 +41,7 @@ export function tokenGetter() {
     IndexComponent,
     LoginComponent,
     LogoutComponent,
+    RegisterComponent,
 
   ],
   imports: [

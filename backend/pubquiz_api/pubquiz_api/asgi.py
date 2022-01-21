@@ -1,5 +1,5 @@
 """
-ASGI config for sportchimp_api project.
+ASGI config
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

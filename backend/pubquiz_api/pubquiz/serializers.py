@@ -12,6 +12,7 @@ class QuizSerializer(serializers.ModelSerializer):
 
 class QuestionSerializer(serializers.ModelSerializer):
     quiz = QuizSerializer()
+
     # created_by_user = UserSerializer()
 
     class Meta:
@@ -28,12 +29,10 @@ class UserSerializer(serializers.ModelSerializer):
 """
 
 
-
 class UserAnswerSerializer(serializers.ModelSerializer):
     question = QuestionSerializer()
-    #created_by_user = UserSerializer()
+    # created_by_user = UserSerializer()
 
     class Meta:
         model = models.UserAnswer
         fields = '__all__'
-
