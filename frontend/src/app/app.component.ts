@@ -8,6 +8,7 @@ import {UserService} from "./services/user.service";
 })
 export class AppComponent  {
   isLoggedIn = false;
+  title = 'Pubquiz';
 
   constructor(public userService: UserService) {
   }
