@@ -19,8 +19,8 @@
         <span class="spacer"></span>
 
         <!-- only shown when logged in -->
-        <div *ngIf="userService.isLoggedIn | async; else guest">
-          <button [routerLink]="'/activity-form'" mat-icon-button>
+        <div *ngIf="userService.isLoggedIn | async; else guest">-->
+          <button [routerLink]="'/quiz-form'" mat-icon-button>
             <mat-icon>add</mat-icon>
           </button>
           <button mat-icon-button matBadge="4" matBadgeColor="accent" matBadgeSize="medium">

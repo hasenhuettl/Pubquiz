@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
-import {Quiz,QuizService} from "../services/quiz.service";
+import {QuizService} from "../services/quiz.service";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -50,15 +50,18 @@ export class QuizFormComponent implements OnInit {
   createOrUpdateQuiz() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
+      console.log(this.quizFormGroup.value)
       this.quizService.updateQuiz(this.quizFormGroup.value).subscribe(() => {
-       this.snackbar.open('Sport updated successfully!', 'OK',{duration:3000})
+       this.snackbar.open('Quiz updated successfully!', 'OK',{duration:3000})
       })
-      this.router.navigate(['/quiz-list']);
+      this.router.navigate(['/index']);
     } else {
+      console.log(this.quizFormGroup.value)
       this.quizService.createQuiz(this.quizFormGroup.value).subscribe(() => {
         this.snackbar.open('Quiz created successfully!', 'OK',{duration:3000})
       })
-      this.router.navigate(['/quiz-list']);
+      //console.log(this.quizFormGroup.value)
+      this.router.navigate(['/index']);
     }
   }
   /**uploadImage(image: File) {
