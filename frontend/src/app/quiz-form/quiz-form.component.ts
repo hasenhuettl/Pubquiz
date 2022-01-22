@@ -31,7 +31,7 @@ export class QuizFormComponent implements OnInit {
   ) {
     this.quizFormGroup = new FormGroup({
       id: new FormControl(null),
-      name: new FormControl('', [Validators.required], [this.nameValidator()]),
+      quiz_name: new FormControl('', [Validators.required], [this.nameValidator()]),
       //description: new FormControl('', [Validators.required])
       }
     )

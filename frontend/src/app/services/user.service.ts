@@ -46,7 +46,7 @@ export class UserService {
 
 
         // To do: quiz list
-        this.router.navigate(['quiz-list']);
+        this.router.navigate(['/index']);
         this.snackbar.open('Successfully logged in', 'OK',{duration:3000});
       }, () => {
         this.snackbar.open('Invalid credentials', 'OK',{duration:3000})
@@ -56,19 +56,7 @@ export class UserService {
   logout(): void {
     localStorage.removeItem(this.accessTokenLocalStorageKey);
     this.isLoggedIn.next(false);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/index']);
   }
 
-  getUser(id: number) {
-    return this.http.get<User>(`${this.pubquizApiService.base_url}/users/${id}/`);
-  }
-  getUsers() {
-    return this.http.get<User[]>(`${this.pubquizApiService.base_url}/users/`);
-  }
-  createUser(user: User) {
-    return this.http.post<User>(`${this.pubquizApiService.base_url}/users/`, user);
-  }
-  updateUser(user: User) {
-    return this.http.put<User>(`${this.pubquizApiService.base_url}/users/${user.id}/`, user);
-  }
 }

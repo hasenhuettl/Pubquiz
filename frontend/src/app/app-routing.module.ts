@@ -6,7 +6,6 @@ import {AuthGuard} from "./auth.guard";
 import {IndexComponent} from "./index/index.component";
 import {LoginComponent} from "./login/login.component";
 import {LogoutComponent} from "./logout/logout.component";
-import {RegisterComponent} from "./register/register.component";
 import {QuizFormComponent} from "./quiz-form/quiz-form.component";
 
 const routes: Routes = [
@@ -15,7 +14,6 @@ const routes: Routes = [
   {path: 'index', component: IndexComponent },
   {path: 'login', component: LoginComponent },
   {path: 'logout', component: LogoutComponent },
-  {path: 'register', component: RegisterComponent },
   {path: 'quiz-form', component: QuizFormComponent },
 
 ];

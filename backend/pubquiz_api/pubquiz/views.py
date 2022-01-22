@@ -16,6 +16,7 @@ from django.contrib.auth.models import User
 class QuizViewSet(viewsets.ViewSet):
     # GET: http://127.0.0.1:8000/quiz/
     def list(self, request, format=None):
+
         queryset = models.Quiz.objects.all()
 
         # GET http://127.0.0.1:8000/quiz/?order_by=id
