@@ -1,8 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { QuizFormComponent } from './quiz-form.component';
 
-describe('SportFormComponent', () => {
+describe('QuizFormComponent', () => {
   let component: QuizFormComponent;
   let fixture: ComponentFixture<QuizFormComponent>;
 

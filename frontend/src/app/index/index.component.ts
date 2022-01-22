@@ -24,7 +24,7 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     /**this.quizService.getQuizzes().subscribe(quizzes => this.quizzes = quizzes)**/
     this.quizService.getQuizzes().subscribe((response) => {
-      console.log({response})
+      //console.log({response})
       this.quizzes = response
     })
 

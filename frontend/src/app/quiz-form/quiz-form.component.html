@@ -30,11 +30,11 @@
   <p></p>-->
 
 
-  <!-- Submit Button -->
+  <!-- Submit Button [disabled]="!quizFormGroup.valid"-->
   <mat-card-actions align="start">
-    <button mat-raised-button color="accent"  [disabled]="!quizFormGroup.valid">{{ submitButtonText }}</button>
+    <button mat-raised-button color="accent"  >{{ submitButtonText }}</button>
    <!--button mat-raised-button color="accent" (click)="processFile(imageInput)"[disabled]="!sportFormGroup.valid" >Upload</button-->
-    <button mat-raised-button color="warn" [routerLink]="'/quiz-list/'">Back</button>
+    <button mat-raised-button color="warn" [routerLink]="'/index/'">Back</button>
   </mat-card-actions>
 
 </form>
