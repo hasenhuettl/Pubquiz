@@ -10,9 +10,11 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class QuestionListComponent implements OnInit {
   displayedColumns = ['id', 'question_string', 'master_answer', 'quiz', 'join', 'edit', 'delete'];
+  test: Question[] = [];
   questions: Question[] = [];
   filteredQuestions: Question[] = [];
   filterFormControl = new FormControl('');
+  id = '';
 
 
   constructor(private questionService: QuestionService,
@@ -20,27 +22,29 @@ export class QuestionListComponent implements OnInit {
   ) {  }
 
   ngOnInit(): void {
+
     this.questionService.getQuestions().subscribe((response) => {
       //console.log({response})
       this.questions = response
       this.filteredQuestions = this.questions
     })
 
-    this.filterFormControl.valueChanges.subscribe(value => this.filter(value));
-    this.route.paramMap.subscribe(params => {
-      this.filterFormControl.setValue(params.get('filter'))
-    });
+}
+
+
+  /*filter(filterValue: string) {
+    this.filteredQuestions = this.questions.filter(a => {
+      return !filterValue || a.question_string.toLowerCase().includes(filterValue.toLowerCase())
+      }
+  )
   }
 
-
-  filter(filterValue: string) {
-    if(this.route.snapshot.paramMap.get('id') != null){
-      const id = this.route.snapshot.paramMap.get('id');
+  /*filter(filterValue: string) {
+    console.log()
+    if(this.id != '') {
       this.filteredQuestions = this.questions.filter(a => {
-        console.log(id)
-        console.log(a.quiz.id)
         return (!filterValue || a.question_string.toLowerCase().includes(filterValue.toLowerCase())
-                && a.quiz.id.toString() == id )
+                && a.quiz.id.toString() == this.id )
         }
       )
     }
@@ -50,7 +54,7 @@ export class QuestionListComponent implements OnInit {
       }
       )
     }
-  }
+  }*/
 
   deleteQuestion(question: Question): void {
     this.questionService.deleteQuestion(question).subscribe(() => {

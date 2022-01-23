@@ -32,11 +32,11 @@
     <td mat-cell *matCellDef="let element"> {{element.quiz.id}} </td>
   </ng-container>
 
-  <!-- Join Column -->
+  <!-- Answer Column -->
   <ng-container matColumnDef="join">
     <th mat-header-cell *matHeaderCellDef ></th>
     <td mat-cell *matCellDef="let element">
-      <button mat-raised-button color="primary" [routerLink]="'/question/' + element.id">Join</button>
+      <button mat-raised-button color="primary" [routerLink]="'/question/' + element.id">Answer</button>
     </td>
   </ng-container>
 

@@ -1,0 +1,48 @@
+<form [formGroup]="questionFormGroup" (ngSubmit)="createOrUpdateQuestion()" class="question-form__form">
+
+  <!-- Question Input Field -->
+  <mat-form-field>
+    <input matInput type="text" placeholder="Name" formControlName="question_string">
+    <mat-hint align="end">The name of the question</mat-hint>
+
+    <mat-error *ngIf="questionFormGroup.controls.question_string.hasError('required')">
+      Name is required
+    </mat-error>
+    <mat-error *ngIf="questionFormGroup.controls.question_string.hasError('nameAlreadyExists')">
+      Question with this name already exists
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Answer Input Field -->
+  <mat-form-field>
+    <input matInput type="text" placeholder="Name" formControlName="master_answer">
+    <mat-hint align="end">The name of the question</mat-hint>
+
+    <mat-error *ngIf="questionFormGroup.controls.master_answer.hasError('required')">
+    Name is required
+  </mat-error>
+  <mat-error *ngIf="questionFormGroup.controls.master_answer.hasError('answerAlreadyExists')">
+    Question with this name already exists
+  </mat-error>
+  </mat-form-field>
+
+  <!-- Description Input Field
+  <mat-form-field>
+    <input matInput type="text" placeholder="Description" formControlName="description">
+    <mat-hint align="end">The description of the quiz</mat-hint>
+
+    <mat-error *ngIf="quizFormGroup.controls.name.hasError('required')">
+      Description is required
+    </mat-error>
+  </mat-form-field-->
+
+
+  <!-- Submit Button [disabled]="!quizFormGroup.valid"-->
+  <mat-card-actions align="start">
+    <button mat-raised-button color="accent" (click)="submit()" >{{ submitButtonText }}</button>
+    <!--button mat-raised-button color="accent" (click)="processFile(imageInput)"[disabled]="!sportFormGroup.valid" >
+    Upload</button-->
+    <button mat-raised-button color="warn" [routerLink]="'/question-list/'" >Back</button>
+  </mat-card-actions>
+
+</form>
