@@ -21,19 +21,14 @@
     <mat-error *ngIf="quizFormGroup.controls.name.hasError('required')">
       Description is required
     </mat-error>
-  </mat-form-field>-->
-
-  <!-- Image Input Field
-  <p></p>
-  <mat-hint>Image Upload:</mat-hint>
-  <input #imageInput type="file" accept="image/*">
-  <p></p>-->
+  </mat-form-field-->
 
 
   <!-- Submit Button [disabled]="!quizFormGroup.valid"-->
   <mat-card-actions align="start">
     <button mat-raised-button color="accent"  >{{ submitButtonText }}</button>
-   <!--button mat-raised-button color="accent" (click)="processFile(imageInput)"[disabled]="!sportFormGroup.valid" >Upload</button-->
+   <!--button mat-raised-button color="accent" (click)="processFile(imageInput)"[disabled]="!sportFormGroup.valid" >
+   Upload</button-->
     <button mat-raised-button color="warn" [routerLink]="'/index/'">Back</button>
   </mat-card-actions>
 

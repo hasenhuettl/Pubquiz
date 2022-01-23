@@ -29,6 +29,7 @@ import {IndexComponent} from "./index/index.component";
 import {LogoutComponent} from "./logout/logout.component";
 import {LoginComponent} from "./login/login.component";
 import {QuizFormComponent} from "./quiz-form/quiz-form.component";
+import { QuestionListComponent } from './question-list/question-list.component';
 
 
 export function tokenGetter() {
@@ -42,6 +43,7 @@ export function tokenGetter() {
     LoginComponent,
     LogoutComponent,
     QuizFormComponent,
+    QuestionListComponent,
 
   ],
   imports: [

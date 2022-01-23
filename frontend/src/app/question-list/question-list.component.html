@@ -1,0 +1,64 @@
+<mat-form-field appearance="outline" style="width: 50%; margin-left: 100px; margin-top: 10px">
+  <mat-icon matPrefix>search</mat-icon>
+  <input matInput type="text" [formControl]="filterFormControl" placeholder="Search for a question"/>
+</mat-form-field>
+
+<button mat-stroked-button style="background-color: #008d8d; margin-left: 10px; color: white"
+        [routerLink]="'/question-form/'">Create Question
+</button>
+<table mat-table style="width: 100%" [dataSource]="filteredQuestions" matSort class="mat-elevation-z8">
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+
+  <!-- Question Column -->
+  <ng-container matColumnDef="question_string">
+    <th mat-header-cell *matHeaderCellDef>name</th>
+    <td mat-cell *matCellDef="let element"> {{element.question_string}}</td>
+  </ng-container>
+
+  <!-- Master Answer Column -->
+  <ng-container matColumnDef="master_answer">
+    <th mat-header-cell *matHeaderCellDef>answer</th>
+    <td mat-cell *matCellDef="let element"> {{element.master_answer}}</td>
+  </ng-container>
+
+  <!-- Quiz ID Column -->
+  <ng-container matColumnDef="quiz">
+    <th mat-header-cell *matHeaderCellDef >Quiz-ID</th>
+    <td mat-cell *matCellDef="let element"> {{element.quiz.id}} </td>
+  </ng-container>
+
+  <!-- Join Column -->
+  <ng-container matColumnDef="join">
+    <th mat-header-cell *matHeaderCellDef ></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button color="primary" [routerLink]="'/question/' + element.id">Join</button>
+    </td>
+  </ng-container>
+
+  <!-- Edit Column -->
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button color="primary" [routerLink]="'/question-form/' + element.id">Edit</button>
+      <!--<button mat-raised-button color="primary" *ngIf="userService.hasPermission('change_question')" color="primary"
+      [routerLink]="'/movie-form/' + element.id">Edit</button>-->
+    </td>
+  </ng-container>
+
+  <!-- Delete Column -->
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button color="warn" (click)="confirmDelete(element)">Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>

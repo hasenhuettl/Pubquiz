@@ -59,13 +59,13 @@ class QuizViewSet(viewsets.ViewSet):
         try:
             quiz = models.Quiz.objects.get(pk=pk)
             # quiz.quiz_master = request.data["quiz_master"]
-            quiz.name = request.data["quiz_name"]
+            quiz.quiz_name = request.data["quiz_name"]
             quiz.save()
             return Response(
                 {
                     "id": quiz.pk,
                     # "quiz_master": quiz.quiz_master,
-                    "quiz_name": quiz.name
+                    "quiz_name": quiz.quiz_name
                 },
                 status=200
             )

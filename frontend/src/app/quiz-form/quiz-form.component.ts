@@ -8,10 +8,6 @@ import {map} from "rxjs/operators";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 
-/**class ImageSnippet {
-  constructor(public src: string, public file: File) {}
-}**/
-
 @Component({
   selector: 'app-quiz-form',
   templateUrl: './quiz-form.component.html',
@@ -48,8 +44,9 @@ export class QuizFormComponent implements OnInit {
   }
 
   createOrUpdateQuiz() {
-    //const id = this.route.snapshot.paramMap.get('id');
-    const id = this.quizFormGroup.controls['id'].value
+    const id = this.route.snapshot.paramMap.get('id');
+    // const id = this.quizFormGroup.controls['id'].value
+    console.log(id)
     if (id) {
       console.log(this.quizFormGroup.value)
       this.quizService.updateQuiz(this.quizFormGroup.value).subscribe(() => {
@@ -65,15 +62,7 @@ export class QuizFormComponent implements OnInit {
       this.router.navigate(['/index']);
     }
   }
-  /**uploadImage(image: File) {
-    const formData = new FormData();
-    formData.append('image', image);
-    formData.append('name', this.quizFormGroup.value.name);
-    formData.append('description', this.quizFormGroup.value.description);
-    console.log(image)
 
-    return this.http.post('/api/sports/', formData);
-  }**/
 
   // Validators
   nameValidator(): AsyncValidatorFn {
@@ -87,24 +76,6 @@ export class QuizFormComponent implements OnInit {
     }
   }
 
-  /**processFile(imageInput: any) {
-    const file: File = imageInput.files[0];
-    const reader = new FileReader();
 
-    reader.addEventListener('load', (event: any) => {
-
-      this.selectedFile = new ImageSnippet(event.target.result, file);
-
-      this.uploadImage(this.selectedFile.file).subscribe(
-        (res:any) => {
-
-        },
-        (err:any) => {
-
-        })
-    });
-
-    reader.readAsDataURL(file);
-  }**/
 }
 
