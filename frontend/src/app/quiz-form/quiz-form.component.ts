@@ -48,7 +48,8 @@ export class QuizFormComponent implements OnInit {
   }
 
   createOrUpdateQuiz() {
-    const id = this.route.snapshot.paramMap.get('id');
+    //const id = this.route.snapshot.paramMap.get('id');
+    const id = this.quizFormGroup.controls['id'].value
     if (id) {
       console.log(this.quizFormGroup.value)
       this.quizService.updateQuiz(this.quizFormGroup.value).subscribe(() => {

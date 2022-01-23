@@ -7,9 +7,9 @@
   <input matInput type="text" [formControl]="filterFormControl" placeholder="Search for a pubquiz"/>
 </mat-form-field>
 
-<table mat-table style="width: 100%" [dataSource]="filteredQuizzes" matSort class="mat-elevation-z8">
-
-  <!-- ID Column -->
+<!--<table mat-table style="width: 100%" [dataSource]="filteredQuizzes" matSort class="mat-elevation-z8">-->
+<table mat-table style="width: 100%" [dataSource]="quizzes" matSort class="mat-elevation-z8">
+ <!-- ID Column -->
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef mat-sort-header="Sort by ID">ID</th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
@@ -34,6 +34,7 @@
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
       <button mat-raised-button color="primary" [routerLink]="'/quiz-form/' + element.id">Edit</button>
+      <!--<button mat-raised-button color="primary" *ngIf="userService.hasPermission('change_quiz')" color="primary" [routerLink]="'/movie-form/' + element.id">Edit</button>-->
     </td>
   </ng-container>
 

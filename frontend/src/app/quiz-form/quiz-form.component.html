@@ -2,7 +2,7 @@
 
   <!-- Name Input Field -->
   <mat-form-field>
-    <input matInput type="text" placeholder="Name" formControlName="name">
+    <input matInput type="text" placeholder="Name" formControlName="quiz_name">
     <mat-hint align="end">The name of the quiz</mat-hint>
 
     <mat-error *ngIf="quizFormGroup.controls.quiz_name.hasError('required')">
