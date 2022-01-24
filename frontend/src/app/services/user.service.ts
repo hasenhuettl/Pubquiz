@@ -4,15 +4,6 @@ import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {PubquizApiService} from "./pubquiz-api.service";
-
-export interface User {
-  id: number;
-  username: string;
-  first_name: string;
-  last_name: string;
-  date_joined: string;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -22,12 +13,8 @@ export class UserService {
   readonly accessTokenLocalStorageKey = 'access_token';
   isLoggedIn = new BehaviorSubject(false);
 
-  constructor(private http: HttpClient,
-              private router: Router,
-              private jwtHelperService: JwtHelperService,
-              private snackbar: MatSnackBar,
-              private pubquizApiService: PubquizApiService
-  ) {
+  constructor(private http: HttpClient, private router: Router, private jwtHelperService: JwtHelperService,
+              private snackbar: MatSnackBar) {
     const token = localStorage.getItem(this.accessTokenLocalStorageKey);
     if (token) {
       console.log('Token expiration date: ' + this.jwtHelperService.getTokenExpirationDate(token));
@@ -36,27 +23,29 @@ export class UserService {
     }
   }
 
-// API
   login(userData: { username: string, password: string }): void {
     this.http.post('/api/api-token-auth/', userData)
       .subscribe((res: any) => {
         this.isLoggedIn.next(true);
         localStorage.setItem('access_token', res.token);
-
-
-
-        // To do: quiz list
-        this.router.navigate(['/index']);
-        this.snackbar.open('Successfully logged in', 'OK',{duration:3000});
+        this.router.navigate(['movie-list']);
+        this.snackbar.open('Successfully logged in', 'OK', {duration: 3000});
       }, () => {
-        this.snackbar.open('Invalid credentials', 'OK',{duration:3000})
+        this.snackbar.open('Invalid credentials', 'OK', {duration: 3000})
       });
   }
 
   logout(): void {
     localStorage.removeItem(this.accessTokenLocalStorageKey);
     this.isLoggedIn.next(false);
-    this.router.navigate(['/index']);
+    this.router.navigate(['/login']);
+  }
+
+  hasPermission(permission:string): boolean {
+    const token = localStorage.getItem(this.accessTokenLocalStorageKey);
+    const decodedToken = this.jwtHelperService.decodeToken(token ? token : '');
+    const permissions = decodedToken? decodedToken.permissions: {};
+    return permission in permissions;
   }
 
 }
