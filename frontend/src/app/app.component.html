@@ -19,12 +19,9 @@
         <span class="spacer"></span>
 
         <!-- only shown when logged in -->
-        <div *ngIf="userService.isLoggedIn | async; else guest">-->
+        <div *ngIf="userService.isLoggedIn | async; else guest">
           <button [routerLink]="'/quiz-form'" mat-icon-button>
             <mat-icon>add</mat-icon>
-          </button>
-          <button mat-icon-button matBadge="4" matBadgeColor="accent" matBadgeSize="medium">
-            <mat-icon>notifications_active</mat-icon>
           </button>
           <button [matMenuTriggerFor]="userMenu" mat-icon-button>
             <mat-icon>account_circle</mat-icon>

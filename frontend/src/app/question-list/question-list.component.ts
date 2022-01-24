@@ -10,25 +10,31 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class QuestionListComponent implements OnInit {
   displayedColumns = ['id', 'question_string', 'master_answer', 'quiz', 'join', 'edit', 'delete'];
-  test: Question[] = [];
   questions: Question[] = [];
   filteredQuestions: Question[] = [];
   filterFormControl = new FormControl('');
   id = '';
 
+  question: any | Question = {};
 
   constructor(private questionService: QuestionService,
               private route: ActivatedRoute,
   ) {  }
 
   ngOnInit(): void {
+    if(this.route.snapshot.paramMap.get('id') != null) {
+      this.id = this.route.snapshot.paramMap.get('id')!;
+    }
 
     this.questionService.getQuestions().subscribe((response) => {
       //console.log({response})
       this.questions = response
-      this.filteredQuestions = this.questions
+      this.filter(this.question.question_string);
     })
-
+    this.filterFormControl.valueChanges.subscribe(value => this.filter(value));
+    this.route.paramMap.subscribe(params => {
+      this.filterFormControl.setValue(params.get('filter'))
+    });
 }
 
 
@@ -37,14 +43,15 @@ export class QuestionListComponent implements OnInit {
       return !filterValue || a.question_string.toLowerCase().includes(filterValue.toLowerCase())
       }
   )
-  }
+  }*/
 
-  /*filter(filterValue: string) {
+  filter(filterValue: string) {
     console.log()
     if(this.id != '') {
       this.filteredQuestions = this.questions.filter(a => {
-        return (!filterValue || a.question_string.toLowerCase().includes(filterValue.toLowerCase())
-                && a.quiz.id.toString() == this.id )
+        console.log(a)
+        return (!filterValue || a.question_string.toLowerCase().includes(filterValue.toLowerCase()))
+                && ( a.quiz.id.toString() == this.id )
         }
       )
     }
@@ -54,7 +61,7 @@ export class QuestionListComponent implements OnInit {
       }
       )
     }
-  }*/
+  }
 
   deleteQuestion(question: Question): void {
     this.questionService.deleteQuestion(question).subscribe(() => {
