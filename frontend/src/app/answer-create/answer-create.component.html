@@ -1,8 +1,8 @@
-<form [formGroup]="answerFormGroup" (ngSubmit)="createAnswer()" class="question-create__form">
+<form [formGroup]="answerFormGroup" (ngSubmit)="createAnswer()" class="answer-create__form">
 
   <!-- Answer Input Field -->
   <mat-form-field>
-    <input matInput type="text" placeholder="Question" formControlName="question_string">
+    <input matInput type="text" placeholder="Question" formControlName="user_answer">
     <mat-hint align="end">Your Answer</mat-hint>
 
     <mat-error *ngIf="answerFormGroup.controls.user_answer.hasError('required')">
@@ -15,8 +15,8 @@
 
   <!-- Submit Button [disabled]="!quizFormGroup.valid"-->
   <mat-card-actions align="start">
-    <button mat-raised-button color="accent" type="submit" >{{ submitButtonText }}</button>
-    <button mat-raised-button color="warn" [routerLink]="'/question-list/' + question_id" >Back</button>
+    <button mat-raised-button color="accent" color="primary" type="submit" >{{ submitButtonText }}</button>
+    <button mat-raised-button color="warn" [routerLink]="'/answer-list/' + question_id" >Back</button>
   </mat-card-actions>
 
 </form>

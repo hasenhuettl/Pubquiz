@@ -46,7 +46,7 @@ export class AnswerCreateComponent implements OnInit {
     this.answerService.createAnswer(this.answerFormGroup.value).subscribe(() => {
       this.snackbar.open('Answer created successfully!', 'OK', {duration: 3000})
     })
-    this.router.navigate(['/question-list/' + this.question_id]);
+    this.router.navigate(['/answer-list/' + this.question_id]);
   }
 
   answerValidator(): AsyncValidatorFn {

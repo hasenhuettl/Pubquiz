@@ -12,7 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class AnswerListComponent implements OnInit {
 
-  displayedColumns = ['id','user_answer', 'delete'];
+  displayedColumns = ['id','user_answer', 'edit', 'delete'];
   answers: Answer[] = [];
   filteredAnswers: Answer[] = [];
   filterFormControl = new FormControl('');
@@ -20,7 +20,6 @@ export class AnswerListComponent implements OnInit {
 
   constructor(private answerService : AnswerService,
               private route: ActivatedRoute,
-
   ) { }
 
   ngOnInit(): void {

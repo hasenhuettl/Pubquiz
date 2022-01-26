@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { PubquizApiService } from "./pubquiz-api.service";
+import {Question} from "./question.service";
 
 
 export interface Answer {
   id: number;
   user_answer: string;
+  question: Question;
+  created_by_user: string;
+  is_true: boolean; // Is Answer true or not?
 }
 @Injectable({
   providedIn: 'root'
