@@ -41,7 +41,8 @@ export class QuestionFormComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.submitButtonText = 'Update';
-      this.questionService.getQuestion(id).subscribe(question => { this.questionFormGroup.patchValue(question) });
+      this.questionService.getQuestion(id).subscribe(question =>
+      { this.questionFormGroup.patchValue(question) });
     } else {
       this.submitButtonText = 'Create';
     }
@@ -49,7 +50,6 @@ export class QuestionFormComponent implements OnInit {
 
   updateQuestion() {
     const id = this.route.snapshot.paramMap.get('id');
-    // const id = this.questionFormGroup.controls['id'].value
     if (id) {
       const quiz_id = this.questionFormGroup.controls['quiz'].value.id
       console.log(this.questionFormGroup.value)
@@ -72,11 +72,11 @@ export class QuestionFormComponent implements OnInit {
       return this.questionService.getQuestions().pipe(map(questions => {
         const currentId = this.questionFormGroup.controls['id'].value;
         const currentName = this.questionFormGroup.controls['question_string'].value;
-        const existingQuestion = questions.find(question => question.question_string === currentName);
+        const currentQuizId = this.questionFormGroup.controls['quiz'].value.id;
+        const existingQuestion = questions.find(question => (question.question_string === currentName && question.quiz.id == currentQuizId));
         return existingQuestion && existingQuestion.id !== currentId ? {nameAlreadyExists: true} : null
       }))
     }
   }
 
 }
-
