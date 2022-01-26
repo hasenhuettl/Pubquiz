@@ -29,9 +29,11 @@ import {IndexComponent} from "./index/index.component";
 import {LogoutComponent} from "./logout/logout.component";
 import {LoginComponent} from "./login/login.component";
 import {QuizFormComponent} from "./quiz-form/quiz-form.component";
-import { QuestionListComponent } from './question-list/question-list.component';
-import { QuestionFormComponent } from './question-form/question-form.component';
-import { QuestionCreateComponent } from './question-create/question-create.component';
+import {QuestionListComponent } from './question-list/question-list.component';
+import {QuestionFormComponent } from './question-form/question-form.component';
+import {QuestionCreateComponent } from './question-create/question-create.component';
+import {AnswerListComponent} from './answer-list/answer-list.component';
+import {AnswerFormComponent} from './answer-form/answer-form.component';
 
 
 export function tokenGetter() {
@@ -48,6 +50,8 @@ export function tokenGetter() {
     QuestionListComponent,
     QuestionFormComponent,
     QuestionCreateComponent,
+    AnswerListComponent,
+    AnswerFormComponent,
 
   ],
   imports: [

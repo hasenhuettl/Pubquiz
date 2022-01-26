@@ -10,6 +10,10 @@ import {QuizFormComponent} from "./quiz-form/quiz-form.component";
 import {QuestionListComponent} from "./question-list/question-list.component";
 import {QuestionFormComponent} from "./question-form/question-form.component";
 import {QuestionCreateComponent} from "./question-create/question-create.component";
+import {AnswerListComponent} from "./answer-list/answer-list.component";
+import {AnswerFormComponent} from "./answer-form/answer-form.component";
+
+
 
 const routes: Routes = [
   // index page
@@ -24,6 +28,10 @@ const routes: Routes = [
   {path: 'question-form', component: QuestionFormComponent },
   {path: 'question-form/:id', component: QuestionFormComponent },
   {path: 'question-create/:id', component: QuestionCreateComponent },
+  {path: 'answer-list', component: AnswerListComponent },
+  {path: 'answer-list/:id', component: AnswerListComponent },
+  {path: 'answer-form', component: AnswerFormComponent },
+  {path: 'answer-form/:id', component: AnswerFormComponent },
 
 
 ];
