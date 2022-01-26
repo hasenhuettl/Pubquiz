@@ -55,15 +55,15 @@ export class QuizFormComponent implements OnInit {
   createOrUpdateQuiz() {
     const id = this.route.snapshot.paramMap.get('id');
     // const id = this.quizFormGroup.controls['id'].value
-    console.log(id)
+    //console.log(id)
     if (id) {
-      console.log(this.quizFormGroup.value)
+     // console.log(this.quizFormGroup.value)
       this.quizService.updateQuiz(this.quizFormGroup.value).subscribe(() => {
        this.snackbar.open('Quiz updated successfully!', 'OK',{duration:3000})
       })
       this.router.navigate(['/index']);
     } else {
-      console.log(this.quizFormGroup.value)
+      //console.log(this.quizFormGroup.value)
       this.quizService.createQuiz(this.quizFormGroup.value).subscribe(() => {
         this.snackbar.open('Quiz created successfully!', 'OK',{duration:3000})
       })

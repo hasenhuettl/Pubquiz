@@ -18,6 +18,7 @@ export class QuestionFormComponent implements OnInit {
 
   questionFormGroup: FormGroup
   submitButtonText = '';
+  quiz_id ='';
 
   constructor(
     private http: HttpClient,
@@ -51,12 +52,12 @@ export class QuestionFormComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     // const id = this.questionFormGroup.controls['id'].value
     if (id) {
-      const quiz_id = this.questionFormGroup.controls['quiz'].value.id
+       this.quiz_id = this.questionFormGroup.controls['quiz'].value.id
       console.log(this.questionFormGroup.value)
       this.questionService.updateQuestion(this.questionFormGroup.value).subscribe(() => {
         this.snackbar.open('Question updated successfully!', 'OK',{duration:3000})
       })
-      this.router.navigate(['/question-list/' +  quiz_id]);
+      this.router.navigate(['/question-list/' + this.quiz_id]);
     } else {
       console.log(this.questionFormGroup.value)
       console.log('no ID has been passed')
@@ -72,7 +73,8 @@ export class QuestionFormComponent implements OnInit {
       return this.questionService.getQuestions().pipe(map(questions => {
         const currentId = this.questionFormGroup.controls['id'].value;
         const currentName = this.questionFormGroup.controls['question_string'].value;
-        const existingQuestion = questions.find(question => question.question_string === currentName);
+        const currentQuizId = this.questionFormGroup.controls['quiz'].value.id;
+        const existingQuestion = questions.find(question => (question.question_string === currentName && question.quiz.id == currentQuizId));
         return existingQuestion && existingQuestion.id !== currentId ? {nameAlreadyExists: true} : null
       }))
     }

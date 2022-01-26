@@ -29,7 +29,10 @@
 
   <!-- Submit Button [disabled]="!quizFormGroup.valid"-->
   <mat-card-actions align="start">
-    <button mat-raised-button color="accent" type="submit" >{{ submitButtonText }}</button>
+    <button mat-raised-button color="primary" [disabled]="!questionFormGroup.valid">
+      <span *ngIf="!questionFormGroup.controls.id.value">Create</span>
+      <span *ngIf="questionFormGroup.controls.id.value">Update</span>
+    </button>
     <button mat-raised-button color="warn" [routerLink]="'/question-list/' + quiz_id" >Back</button>
   </mat-card-actions>
 

@@ -4,7 +4,6 @@
   <mat-form-field>
     <input matInput type="text" placeholder="Question" formControlName="question_string">
     <mat-hint align="end">Your question</mat-hint>
-
     <mat-error *ngIf="questionFormGroup.controls.question_string.hasError('required')">
       Name is required
     </mat-error>
@@ -27,10 +26,13 @@
   </mat-form-field>
 
 
-  <!-- Submit Button [disabled]="!quizFormGroup.valid"-->
+  <!-- Submit Button {{ submitButtonText }} -->
   <mat-card-actions align="start">
-    <button mat-raised-button color="accent" type="submit" >{{ submitButtonText }}</button>
-    <button mat-raised-button color="warn" [routerLink]="'/index/'" >Back</button>
+    <button mat-raised-button color="primary"  [disabled]="!questionFormGroup.valid">
+      <span *ngIf="!questionFormGroup.controls.id.value">Create</span>
+      <span *ngIf="questionFormGroup.controls.id.value">Update</span>
+    </button>
+    <button mat-raised-button color="warn" [routerLink]="'/question-list/' + quiz_id" >Back</button>
   </mat-card-actions>
 
 </form>
