@@ -43,11 +43,13 @@ export class QuestionFormComponent implements OnInit {
     if (id) {
       this.submitButtonText = 'Update';
       this.questionService.getQuestion(id).subscribe(question =>
-      { this.questionFormGroup.patchValue(question) });
+      {
+        this.questionFormGroup.patchValue(question)
+        this.quiz_id = this.questionFormGroup.controls['quiz'].value.id
+      });
     } else {
       this.submitButtonText = 'Create';
     }
-    this.quiz_id = this.questionFormGroup.controls['quiz'].value.id
   }
 
   updateQuestion() {

@@ -37,7 +37,10 @@ export class QuestionCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.submitButtonText = 'Create';
+    this.submitButtonText = 'Create';
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.quiz_id = this.route.snapshot.paramMap.get('id')!;
+    }
   }
 
   createQuestion() {
