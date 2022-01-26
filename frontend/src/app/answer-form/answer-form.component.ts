@@ -30,17 +30,22 @@ export class AnswerFormComponent implements OnInit {
     private snackbar: MatSnackBar,
     ) {
     this.answerFormGroup = new FormGroup({
-      id: new FormControl(null),
+      id: new FormControl(),
       user_answer: new FormControl('', [Validators.required], [this.answerValidator()]),
       created_by_user: new FormControl(''),
       question: new FormControl(),
+      is_true: new FormControl(false)
       }
     )
   }
 
   ngOnInit(): void {
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.answer_id = this.route.snapshot.paramMap.get('id')!;
+    }
     this.submitButtonText = 'Update';
-    this.answerService.getAnswer(this.answer_id).subscribe(answer => { this.answerFormGroup.patchValue(answer) });
+    this.answerService.getAnswer(this.answer_id).subscribe(answer =>
+    { this.answerFormGroup.patchValue(answer) });
   }
 
   updateAnswer() {
@@ -48,6 +53,7 @@ export class AnswerFormComponent implements OnInit {
       this.answer_id = this.route.snapshot.paramMap.get('id')!;
     }
     if (this.answer_id) {
+      console.log(this.answerFormGroup.value)
       this.question_id = this.answerFormGroup.controls['question'].value.id
       console.log(this.answerFormGroup.value)
       this.answerService.updateAnswer(this.answerFormGroup.value).subscribe(() => {

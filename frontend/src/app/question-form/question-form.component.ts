@@ -42,7 +42,8 @@ export class QuestionFormComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.submitButtonText = 'Update';
-      this.questionService.getQuestion(id).subscribe(question => { this.questionFormGroup.patchValue(question) });
+      this.questionService.getQuestion(id).subscribe(question =>
+      { this.questionFormGroup.patchValue(question) });
     } else {
       this.submitButtonText = 'Create';
     }
@@ -50,7 +51,6 @@ export class QuestionFormComponent implements OnInit {
 
   updateQuestion() {
     const id = this.route.snapshot.paramMap.get('id');
-    // const id = this.questionFormGroup.controls['id'].value
     if (id) {
        this.quiz_id = this.questionFormGroup.controls['quiz'].value.id
       console.log(this.questionFormGroup.value)
@@ -81,4 +81,3 @@ export class QuestionFormComponent implements OnInit {
   }
 
 }
-

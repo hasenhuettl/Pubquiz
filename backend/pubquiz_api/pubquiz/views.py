@@ -174,13 +174,13 @@ class UserAnswerViewSet(viewsets.ViewSet):
         except models.Quiz.DoesNotExist:
             return Response({"error": "Question does not exist"}, status=404)
 
-    # PUT http://127.0.0.1:8000/question/id
+    # PUT http://127.0.0.1:8000/userAnswer/id
     def update(self, request, pk=None, format=None):
         try:
             user_answer = models.UserAnswer.objects.get(pk=pk)
             user_answer.user_answer = request.data["user_answer"]
             #question.master_answer = request.data["master_answer"]
-            #question.save()
+            user_answer.save()
             serializer = serializers.UserAnswerSerializer(user_answer)
             return Response(serializer.data, status=200)
 
@@ -192,7 +192,7 @@ class UserAnswerViewSet(viewsets.ViewSet):
         # So we return a 405 instead.
         return Response(status=405)
 
-    # DELETE http://127.0.0.1:8000/question/id
+    # DELETE http://127.0.0.1:8000/userAnswer/id
     def destroy(self, request, pk=None, format=None):
         models.UserAnswer.objects.filter(pk=pk).delete()
         return Response(status=204)
