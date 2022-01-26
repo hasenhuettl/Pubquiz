@@ -1,4 +1,4 @@
-<form [formGroup]="answerFormGroup" (ngSubmit)="createOrUpdateAnswer()" class="quiz-form__form">
+<form [formGroup]="answerFormGroup" (ngSubmit)="updateAnswer()" class="answer-form__form">
 
   <!-- Name Input Field -->
   <mat-form-field>
@@ -14,9 +14,9 @@
 
   <!-- Submit Button [disabled]="!quizFormGroup.valid"-->
   <mat-card-actions align="start">
-    <button mat-raised-button color="accent"  >{{ submitButtonText }}</button>
+    <button mat-raised-button color="accent" type="submit" >{{ submitButtonText }}</button>
     <!--button mat-raised-button color="accent" (click)="processFile(imageInput)"[disabled]="!sportFormGroup.valid" >Upload</button-->
-    <button mat-raised-button color="warn" [routerLink]="'/index/'">Back</button>
+    <button mat-raised-button color="warn" [routerLink]="'/question-list/'+question_id">Back</button>
   </mat-card-actions>
 
 </form>

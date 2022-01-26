@@ -12,6 +12,7 @@ import {QuestionFormComponent} from "./question-form/question-form.component";
 import {QuestionCreateComponent} from "./question-create/question-create.component";
 import {AnswerListComponent} from "./answer-list/answer-list.component";
 import {AnswerFormComponent} from "./answer-form/answer-form.component";
+import {AnswerCreateComponent} from "./answer-create/answer-create.component";
 
 
 
@@ -28,10 +29,11 @@ const routes: Routes = [
   {path: 'question-form', component: QuestionFormComponent },
   {path: 'question-form/:id', component: QuestionFormComponent },
   {path: 'question-create/:id', component: QuestionCreateComponent },
-  {path: 'answer-list', component: AnswerListComponent },
+  // {path: 'answer-list', component: AnswerListComponent },
   {path: 'answer-list/:id', component: AnswerListComponent },
-  {path: 'answer-form', component: AnswerFormComponent },
+  // {path: 'answer-form', component: AnswerFormComponent },
   {path: 'answer-form/:id', component: AnswerFormComponent },
+  {path: 'answer-create/:id', component: AnswerCreateComponent },
 
 
 ];

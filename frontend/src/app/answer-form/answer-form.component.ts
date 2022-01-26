@@ -6,6 +6,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {AnswerService} from "../services/answer.service";
+import {UserService} from "../services/user.service";
 
 
 @Component({
@@ -15,60 +16,62 @@ import {AnswerService} from "../services/answer.service";
 })
 export class AnswerFormComponent implements OnInit {
 
-  answerFormGroup: FormGroup;
+  answerFormGroup: FormGroup
   submitButtonText = '';
+  answer_id = '';
+  question_id = '';
 
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router,
     private answerService: AnswerService,
-    private snackbar: MatSnackBar
-  ) {
+    private userService: UserService,
+    private snackbar: MatSnackBar,
+    ) {
     this.answerFormGroup = new FormGroup({
-        id: new FormControl(null),
-        user_answer: new FormControl(null),
-
+      id: new FormControl(null),
+      user_answer: new FormControl('', [Validators.required], [this.answerValidator()]),
+      created_by_user: new FormControl(''),
+      question: new FormControl(),
       }
     )
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.submitButtonText = 'Update Answer';
-      this.answerService.getAnswer(id).subscribe(answer => { this.answerFormGroup.patchValue(answer) });
-    } else {
-      this.submitButtonText = 'Save Answer';
-    }
-
+    this.submitButtonText = 'Update';
+    this.answerService.getAnswer(this.answer_id).subscribe(answer => { this.answerFormGroup.patchValue(answer) });
   }
-  createOrUpdateAnswer() {
 
-    const id = this.answerFormGroup.controls['id'].value
-    if (id) {
+  updateAnswer() {
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.answer_id = this.route.snapshot.paramMap.get('id')!;
+    }
+    if (this.answer_id) {
+      this.question_id = this.answerFormGroup.controls['question'].value.id
       console.log(this.answerFormGroup.value)
       this.answerService.updateAnswer(this.answerFormGroup.value).subscribe(() => {
         this.snackbar.open('Answer updated successfully!', 'OK',{duration:3000})
       })
-      this.router.navigate(['/question-list/'+id]);
+      this.router.navigate(['/answer-list/' +  this.question_id]);
     } else {
       console.log(this.answerFormGroup.value)
-      this.answerService.createAnswer(this.answerFormGroup.value).subscribe(() => {
-        this.snackbar.open('Answer created successfully!', 'OK',{duration:3000})
-      })
-
-      this.router.navigate(['/question-list/'+id]);
+      console.log('no ID has been passed')
+      this.snackbar.open('An error occurred!', 'OK',{duration:3000})
+      this.router.navigate(['/index']);
     }
   }
-  /**nameValidator(): AsyncValidatorFn {
+
+
+  answerValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
-      return this.answerService.getAnswers().pipe(map(quizzes => {
+      return this.answerService.getAnswers().pipe(map(answers => {
         const currentId = this.answerFormGroup.controls['id'].value;
-        const currentName = this.answerFormGroup.controls['quiz_name'].value;
-        const existingAnswer = quizzes.find(answer => answer.user_answer === currentName);
+        const currentAnswer = this.answerFormGroup.controls['user_answer'].value;
+        const existingAnswer = answers.find(answer => answer.user_answer === currentAnswer);
         return existingAnswer && existingAnswer.id !== currentId ? {nameAlreadyExists: true} : null
       }))
     }
-  }**/
+  }
+
 }

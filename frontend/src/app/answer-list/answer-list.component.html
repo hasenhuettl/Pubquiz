@@ -1,3 +1,6 @@
+<button mat-stroked-button style="background-color: #008d8d; margin: 10px; color: white"
+        [routerLink]="'/answer-create/' + id">Create Answer
+</button>
 <table mat-table style="width: 100%" [dataSource]="answers" matSort class="mat-elevation-z8">
   <!-- ID Column -->
   <ng-container matColumnDef="id">
@@ -17,16 +20,16 @@
     <td mat-cell *matCellDef="let element">
       <button mat-raised-button color="primary" [routerLink]="'/question-list/' + element.id">Join</button>
     </td>
-  </ng-container>
+  </ng-container> -->
 
   Edit Column
   <ng-container matColumnDef="edit">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
       <button mat-raised-button color="primary" [routerLink]="'/quiz-form/' + element.id">Edit</button>
-      <button mat-raised-button color="primary" *ngIf="userService.hasPermission('change_quiz')" color="primary" [routerLink]="'/movie-form/' + element.id">Edit</button>
+      <!-- <button mat-raised-button color="primary" *ngIf="userService.hasPermission('change_quiz')" color="primary" [routerLink]="'/movie-form/' + element.id">Edit</button>-->
     </td>
-  </ng-container> -->
+  </ng-container>
 
   <!-- Delete Column -->
   <ng-container matColumnDef="delete">

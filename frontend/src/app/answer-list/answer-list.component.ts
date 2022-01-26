@@ -16,6 +16,7 @@ export class AnswerListComponent implements OnInit {
   answers: Answer[] = [];
   filteredAnswers: Answer[] = [];
   filterFormControl = new FormControl('');
+  id = '';
 
   constructor(private answerService : AnswerService,
               private route: ActivatedRoute,
@@ -23,6 +24,9 @@ export class AnswerListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if(this.route.snapshot.paramMap.get('id') != null) {
+      this.id = this.route.snapshot.paramMap.get('id')!;
+    }
     this.answerService.getAnswers().subscribe((response) =>{
       this.answers = response
       this.filteredAnswers = this.answers

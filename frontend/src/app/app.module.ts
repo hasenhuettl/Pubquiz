@@ -34,6 +34,7 @@ import {QuestionFormComponent } from './question-form/question-form.component';
 import {QuestionCreateComponent } from './question-create/question-create.component';
 import {AnswerListComponent} from './answer-list/answer-list.component';
 import {AnswerFormComponent} from './answer-form/answer-form.component';
+import { AnswerCreateComponent } from './answer-create/answer-create.component';
 
 
 export function tokenGetter() {
@@ -52,6 +53,7 @@ export function tokenGetter() {
     QuestionCreateComponent,
     AnswerListComponent,
     AnswerFormComponent,
+    AnswerCreateComponent,
 
   ],
   imports: [

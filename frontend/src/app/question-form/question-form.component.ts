@@ -47,7 +47,7 @@ export class QuestionFormComponent implements OnInit {
     }
   }
 
-  createOrUpdateQuestion() {
+  updateQuestion() {
     const id = this.route.snapshot.paramMap.get('id');
     // const id = this.questionFormGroup.controls['id'].value
     if (id) {
