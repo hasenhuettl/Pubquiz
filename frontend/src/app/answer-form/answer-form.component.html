@@ -4,18 +4,22 @@
   <mat-form-field>
     <input matInput type="text" placeholder="Text" formControlName="user_answer">
     <mat-hint align="end">The name of the quiz</mat-hint>
-
     <mat-error *ngIf="answerFormGroup.controls.user_answer.hasError('required')">
       Name is required
+    </mat-error>
+    <mat-error *ngIf="answerFormGroup.controls.user_answer.hasError('titleAlreadyExists')">
+      Movie with this title already exists
     </mat-error>
 
   </mat-form-field>
 
 
-  <!-- Submit Button [disabled]="!quizFormGroup.valid"-->
+  <!-- Submit Button -->
   <mat-card-actions align="start">
-    <button mat-raised-button color="accent" type="submit" >{{ submitButtonText }}</button>
-    <!--button mat-raised-button color="accent" (click)="processFile(imageInput)"[disabled]="!sportFormGroup.valid" >Upload</button-->
+    <button mat-raised-button color="accent" type="submit" [disabled]="!answerFormGroup.valid">
+      <span *ngIf="!answerFormGroup.controls.id.value">Create</span>
+      <span *ngIf="answerFormGroup.controls.id.value">Update</span>
+    </button>
     <button mat-raised-button type="button" color="warn" [routerLink]="'/question-list/'+question_id">Back</button>
   </mat-card-actions>
 

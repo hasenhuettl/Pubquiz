@@ -45,7 +45,8 @@ export class AnswerFormComponent implements OnInit {
     }
     this.submitButtonText = 'Update';
     this.answerService.getAnswer(this.answer_id).subscribe(answer =>
-    { this.answerFormGroup.patchValue(answer) });
+    { this.answerFormGroup.patchValue(answer)
+      this.question_id = this.answerFormGroup.controls['question'].value.id});
   }
 
   updateAnswer() {
