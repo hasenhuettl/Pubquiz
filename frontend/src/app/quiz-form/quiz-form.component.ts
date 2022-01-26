@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
+import {
+  AbstractControl,
+  AsyncValidatorFn,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
+} from "@angular/forms";
 import {QuizService} from "../services/quiz.service";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
@@ -27,8 +35,9 @@ export class QuizFormComponent implements OnInit {
   ) {
     this.quizFormGroup = new FormGroup({
       id: new FormControl(null),
-      quiz_name: new FormControl('', [Validators.required], [this.nameValidator()]),
-      //description: new FormControl('', [Validators.required])
+      quiz_name: new FormControl('',
+        [Validators.required, this.badWordValidator()],
+        [this.nameValidator()]),
       }
     )
   }
@@ -73,6 +82,12 @@ export class QuizFormComponent implements OnInit {
         const existingQuiz = quizzes.find(quiz => quiz.quiz_name === currentName);
         return existingQuiz && existingQuiz.id !== currentId ? {nameAlreadyExists: true} : null
       }))
+    }
+  }
+  badWordValidator(): ValidatorFn {
+    return (control: AbstractControl) => {
+      const forbidden = /bad word/.test(control.value);
+      return forbidden ? {'badWord': {value: control.value}} : null;
     }
   }
 
