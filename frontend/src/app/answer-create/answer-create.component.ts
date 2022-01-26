@@ -56,10 +56,10 @@ export class AnswerCreateComponent implements OnInit {
   answerValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       return this.answerService.getAnswers().pipe(map(answers => {
-        const currentId = this.answerFormGroup.controls['id'].value;
         const currentAnswer = this.answerFormGroup.controls['user_answer'].value;
-        const existingAnswer = answers.find(answer => answer.user_answer === currentAnswer);
-        return existingAnswer && existingAnswer.id !== currentId ? {nameAlreadyExists: true} : null
+        const currentQuestionId = this.question_id;
+        const existingAnswer = answers.find(answer => answer.user_answer === currentAnswer && answer.question.id.toString() == currentQuestionId);
+        return existingAnswer ? {nameAlreadyExists: true} : null
       }))
     }
   }
