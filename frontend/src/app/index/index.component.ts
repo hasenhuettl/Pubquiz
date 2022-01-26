@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Quiz,QuizService} from "../services/quiz.service";
-import {FormControl} from "@angular/forms";
+import {AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../services/user.service";
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-index',
@@ -14,11 +16,17 @@ export class IndexComponent implements OnInit {
   quizzes: Quiz[] = [];
   filteredQuizzes: Quiz[] = [];
   filterFormControl = new FormControl('');
+  quizFormGroup: FormGroup;
 
 
   constructor(private quizService: QuizService,
               private route: ActivatedRoute,
-  ) {  }
+  ) {
+    this.quizFormGroup = new FormGroup({
+      id: new FormControl(null),
+      quiz_name: new FormControl('',[this.titleValidator()])
+    })
+  }
 
   ngOnInit(): void {
     //this.quizService.getQuizzes().subscribe(quizzes => this.quizzes = quizzes)
@@ -53,4 +61,17 @@ export class IndexComponent implements OnInit {
       this.deleteQuiz(quiz)
     }
   }
+
+  titleValidator(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      return this.quizService.getQuizzes().pipe(map(quizzes => {
+        const currentId = this.quizFormGroup.controls['id'].value;
+        const currentTitle = this.quizFormGroup.controls['quiz_name'].value;
+        const existingMovie = quizzes.find(quiz => quiz.quiz_name === currentTitle);
+
+        return existingMovie && existingMovie.id !== currentId ? {titleAlreadyExists: true} : null
+      }))
+    }
+  }
+
 }
