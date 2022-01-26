@@ -47,6 +47,7 @@ export class QuestionFormComponent implements OnInit {
     } else {
       this.submitButtonText = 'Create';
     }
+    this.quiz_id = this.questionFormGroup.controls['quiz'].value.id
   }
 
   updateQuestion() {
