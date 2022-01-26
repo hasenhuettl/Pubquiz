@@ -18,6 +18,7 @@ export class QuestionFormComponent implements OnInit {
 
   questionFormGroup: FormGroup
   submitButtonText = '';
+  quiz_id ='';
 
   constructor(
     private http: HttpClient,
@@ -51,12 +52,12 @@ export class QuestionFormComponent implements OnInit {
   updateQuestion() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      const quiz_id = this.questionFormGroup.controls['quiz'].value.id
+       this.quiz_id = this.questionFormGroup.controls['quiz'].value.id
       console.log(this.questionFormGroup.value)
       this.questionService.updateQuestion(this.questionFormGroup.value).subscribe(() => {
         this.snackbar.open('Question updated successfully!', 'OK',{duration:3000})
       })
-      this.router.navigate(['/question-list/' +  quiz_id]);
+      this.router.navigate(['/question-list/' + this.quiz_id]);
     } else {
       console.log(this.questionFormGroup.value)
       console.log('no ID has been passed')

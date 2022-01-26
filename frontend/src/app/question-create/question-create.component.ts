@@ -57,10 +57,11 @@ export class QuestionCreateComponent implements OnInit {
   nameValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       return this.questionService.getQuestions().pipe(map(questions => {
-        const currentId = this.questionFormGroup.controls['id'].value;
-        const currentName = this.questionFormGroup.controls['question_string'].value;
-        const existingQuestion = questions.find(question => question.question_string === currentName);
-        return existingQuestion && existingQuestion.id !== currentId ? {nameAlreadyExists: true} : null
+        const currentId1 = this.questionFormGroup.controls['id'].value;
+        const currentName1 = this.questionFormGroup.controls['question_string'].value;
+        const currentQuizId1 = this.questionFormGroup.controls['quiz'].value.id;
+        const existingQuestion1 = questions.find(question => (question.question_string === currentName1 && question.quiz.id == currentQuizId1));
+        return existingQuestion1 && existingQuestion1.id !== currentId1 ? {nameAlreadyExists: true} : null
       }))
     }
   }
