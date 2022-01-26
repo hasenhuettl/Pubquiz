@@ -37,14 +37,6 @@ export class QuestionListComponent implements OnInit {
     });
 }
 
-
-  /*filter(filterValue: string) {
-    this.filteredQuestions = this.questions.filter(a => {
-      return !filterValue || a.question_string.toLowerCase().includes(filterValue.toLowerCase())
-      }
-  )
-  }*/
-
   filter(filterValue: string) {
     console.log()
     if(this.id != '') {
@@ -54,8 +46,7 @@ export class QuestionListComponent implements OnInit {
                 && ( a.quiz.id.toString() == this.id )
         }
       )
-    }
-    else {
+    } else {
       this.filteredQuestions = this.questions.filter(a => {
         return !filterValue || a.question_string.toLowerCase().includes(filterValue.toLowerCase())
       }

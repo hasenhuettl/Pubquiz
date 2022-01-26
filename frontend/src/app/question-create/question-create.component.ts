@@ -15,7 +15,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class QuestionCreateComponent implements OnInit {
 
-  creatFormGroup: FormGroup
+  createFormGroup: FormGroup
   submitButtonText = '';
   quiz_id = '';
 
@@ -26,7 +26,7 @@ export class QuestionCreateComponent implements OnInit {
     private questionService: QuestionService,
     private snackbar: MatSnackBar
   ) {
-    this.creatFormGroup = new FormGroup({
+    this.createFormGroup = new FormGroup({
         id: new FormControl(null),
         question_string: new FormControl('', [Validators.required], [this.nameValidator()]),
         master_answer: new FormControl(''),
@@ -47,27 +47,24 @@ export class QuestionCreateComponent implements OnInit {
     if (this.route.snapshot.paramMap.get('id')) {
       this.quiz_id = this.route.snapshot.paramMap.get('id')!;
     }
-    console.log(this.creatFormGroup.value)
-    this.questionService.createQuestion(this.creatFormGroup.value).subscribe(() => {
+    console.log(this.createFormGroup.value)
+    this.questionService.createQuestion(this.createFormGroup.value).subscribe(() => {
       this.snackbar.open('Question created successfully!', 'OK', {duration: 3000})
     })
     //console.log(this.questionFormGroup.value)
     this.router.navigate(['/question-list/' + this.quiz_id]);
   }
 
-
   // Validators
   nameValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       return this.questionService.getQuestions().pipe(map(questions => {
-        const currentId1 = this.creatFormGroup.controls['id'].value;
-        const currentName1 = this.creatFormGroup.controls['question_string'].value;
-        const currentQuizId1 = this.creatFormGroup.controls['quiz'].value.id;
-        const existingQuestion1 = questions.find(question => (question.question_string === currentName1 && question.quiz.id == currentQuizId1));
-        return existingQuestion1 && existingQuestion1.id !== currentId1 ? {nameAlreadyExists: true} : null
+        const currentName = this.createFormGroup.controls['question_string'].value;
+        const currentQuizId = this.quiz_id;
+        const existingQuestion = questions.find(question => (question.question_string === currentName && question.quiz.id.toString() == currentQuizId));
+        return existingQuestion ? {nameAlreadyExists: true} : null
       }))
     }
   }
-
 }
 

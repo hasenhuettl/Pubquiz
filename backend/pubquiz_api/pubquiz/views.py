@@ -177,6 +177,12 @@ class UserAnswerViewSet(viewsets.ViewSet):
     # PUT http://127.0.0.1:8000/userAnswer/id
     def update(self, request, pk=None, format=None):
         try:
+            # request.user.id. =
+            #
+            #
+            #
+            #
+            #
             user_answer = models.UserAnswer.objects.get(pk=pk)
             user_answer.user_answer = request.data["user_answer"]
             #question.master_answer = request.data["master_answer"]

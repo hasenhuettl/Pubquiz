@@ -1,14 +1,13 @@
-<form [formGroup]="creatFormGroup" (ngSubmit)="createQuestion()" class="question-create__form">
+<form [formGroup]="createFormGroup" (ngSubmit)="createQuestion()" class="question-create__form">
 
   <!-- Question Input Field -->
   <mat-form-field>
     <input matInput type="text" placeholder="Question" formControlName="question_string">
     <mat-hint align="end">Your question</mat-hint>
-
-    <mat-error *ngIf="creatFormGroup.controls.question_string.hasError('required')">
+    <mat-error *ngIf="createFormGroup.controls.question_string.hasError('required')">
       Name is required
     </mat-error>
-    <mat-error *ngIf="creatFormGroup.controls.question_string.hasError('nameAlreadyExists')">
+    <mat-error *ngIf="createFormGroup.controls.question_string.hasError('nameAlreadyExists')">
       Question with this name already exists
     </mat-error>
   </mat-form-field>
@@ -18,10 +17,10 @@
     <input matInput type="text" placeholder="Answer" formControlName="master_answer">
     <mat-hint align="end">The correct answer of the question</mat-hint>
 
-    <mat-error *ngIf="creatFormGroup.controls.master_answer.hasError('required')">
+    <mat-error *ngIf="createFormGroup.controls.master_answer.hasError('required')">
       Name is required
     </mat-error>
-    <mat-error *ngIf="creatFormGroup.controls.master_answer.hasError('answerAlreadyExists')">
+    <mat-error *ngIf="createFormGroup.controls.master_answer.hasError('answerAlreadyExists')">
       Question with this name already exists
     </mat-error>
   </mat-form-field>
@@ -29,9 +28,9 @@
 
   <!-- Submit Button [disabled]="!quizFormGroup.valid"-->
   <mat-card-actions align="start">
-    <button mat-raised-button color="primary" [disabled]="!creatFormGroup.valid">
-      <span *ngIf="!creatFormGroup.controls.id.value">Create</span>
-      <span *ngIf="creatFormGroup.controls.id.value">Update</span>
+    <button mat-raised-button color="primary" [disabled]="!createFormGroup.valid">
+      <span *ngIf="!createFormGroup.controls.id.value">Create</span>
+      <span *ngIf="createFormGroup.controls.id.value">Update</span>
     </button>
     <button mat-raised-button type="button" color="warn" [routerLink]="'/question-list/' + quiz_id" >Back</button>
   </mat-card-actions>

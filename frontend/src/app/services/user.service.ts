@@ -28,7 +28,7 @@ export class UserService {
       .subscribe((res: any) => {
         this.isLoggedIn.next(true);
         localStorage.setItem('access_token', res.token);
-        this.router.navigate(['movie-list']);
+        this.router.navigate(['/index/']);
         this.snackbar.open('Successfully logged in', 'OK', {duration: 3000});
       }, () => {
         this.snackbar.open('Invalid credentials', 'OK', {duration: 3000})
