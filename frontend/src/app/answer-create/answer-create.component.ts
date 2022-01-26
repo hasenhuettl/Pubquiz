@@ -35,6 +35,9 @@ export class AnswerCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.route.snapshot.paramMap.get('id')) {
+      this.question_id = this.route.snapshot.paramMap.get('id')!;
+    }
     this.submitButtonText = 'Create';
   }
 
@@ -48,6 +51,7 @@ export class AnswerCreateComponent implements OnInit {
     })
     this.router.navigate(['/answer-list/' + this.question_id]);
   }
+
 
   answerValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {

@@ -15,8 +15,8 @@
 
   <!-- Submit Button [disabled]="!quizFormGroup.valid"-->
   <mat-card-actions align="start">
-    <button mat-raised-button color="accent" color="primary" type="submit" >{{ submitButtonText }}</button>
-    <button mat-raised-button color="warn" [routerLink]="'/answer-list/' + question_id" >Back</button>
+    <button mat-raised-button color="primary" >{{ submitButtonText }}</button>
+    <button mat-raised-button type="button" color="warn" [routerLink]="'/answer-list/' + question_id" >Back</button>
   </mat-card-actions>
 
 </form>
