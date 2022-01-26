@@ -1,4 +1,4 @@
-<form [formGroup]="questionFormGroup" (ngSubmit)="createOrUpdateQuestion()" class="question-form__form">
+<form [formGroup]="questionFormGroup" (ngSubmit)="createQuestion()" class="question-create__form">
 
   <!-- Question Input Field -->
   <mat-form-field>
@@ -30,7 +30,7 @@
   <!-- Submit Button [disabled]="!quizFormGroup.valid"-->
   <mat-card-actions align="start">
     <button mat-raised-button color="accent" type="submit" >{{ submitButtonText }}</button>
-    <button mat-raised-button color="warn" [routerLink]="'/index/'" >Back</button>
+    <button mat-raised-button color="warn" [routerLink]="'/question-list/' + quiz_id" >Back</button>
   </mat-card-actions>
 
 </form>

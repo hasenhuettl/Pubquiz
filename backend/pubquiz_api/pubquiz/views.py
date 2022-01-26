@@ -101,6 +101,7 @@ class QuestionViewSet(viewsets.ViewSet):
         question = models.Question.objects.create(
             # created_by_user=request.data["created_by_user"],
             quiz=models.Quiz.objects.get(id=request.data["quiz"]),
+            created_by_user=request.data["created_by_user"],
             question_string=request.data["question_string"],
             master_answer=request.data["master_answer"]
         )

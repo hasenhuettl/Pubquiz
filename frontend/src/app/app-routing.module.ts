@@ -9,6 +9,7 @@ import {LogoutComponent} from "./logout/logout.component";
 import {QuizFormComponent} from "./quiz-form/quiz-form.component";
 import {QuestionListComponent} from "./question-list/question-list.component";
 import {QuestionFormComponent} from "./question-form/question-form.component";
+import {QuestionCreateComponent} from "./question-create/question-create.component";
 
 const routes: Routes = [
   // index page
@@ -18,10 +19,11 @@ const routes: Routes = [
   {path: 'logout', component: LogoutComponent },
   {path: 'quiz-form', component: QuizFormComponent },
   {path: 'quiz-form/:id', component: QuizFormComponent },
-  {path: 'question-list', component: QuestionListComponent },
+  // {path: 'question-list', component: QuestionListComponent },
   {path: 'question-list/:id', component: QuestionListComponent },
   {path: 'question-form', component: QuestionFormComponent },
   {path: 'question-form/:id', component: QuestionFormComponent },
+  {path: 'question-create/:id', component: QuestionCreateComponent },
 
 
 ];

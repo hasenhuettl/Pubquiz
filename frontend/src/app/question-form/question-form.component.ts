@@ -6,6 +6,7 @@ import {QuestionService} from "../services/question.service";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {UserService} from "../services/user.service";
 
 
 @Component({
@@ -17,20 +18,21 @@ export class QuestionFormComponent implements OnInit {
 
   questionFormGroup: FormGroup
   submitButtonText = '';
-  // selectedFile: ImageSnippet | undefined;
 
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router,
     private questionService: QuestionService,
-    private snackbar: MatSnackBar
+    private userService: UserService,
+    private snackbar: MatSnackBar,
   ) {
     this.questionFormGroup = new FormGroup({
-        id: new FormControl(null),
+      id: new FormControl(null),
       question_string: new FormControl('', [Validators.required], [this.nameValidator()]),
-      master_answer: new FormControl('', [Validators.required], [this.nameValidator()]),
-      // quiz FK?
+      master_answer: new FormControl(''),
+      created_by_user: new FormControl(''),
+      quiz: new FormControl(),
       }
     )
   }
@@ -48,19 +50,17 @@ export class QuestionFormComponent implements OnInit {
   createOrUpdateQuestion() {
     const id = this.route.snapshot.paramMap.get('id');
     // const id = this.questionFormGroup.controls['id'].value
-    console.log(id)
     if (id) {
+      const quiz_id = this.questionFormGroup.controls['quiz'].value.id
       console.log(this.questionFormGroup.value)
       this.questionService.updateQuestion(this.questionFormGroup.value).subscribe(() => {
         this.snackbar.open('Question updated successfully!', 'OK',{duration:3000})
       })
-      this.router.navigate(['/index']);
+      this.router.navigate(['/question-list/' +  quiz_id]);
     } else {
       console.log(this.questionFormGroup.value)
-      this.questionService.createQuestion(this.questionFormGroup.value).subscribe(() => {
-        this.snackbar.open('Question created successfully!', 'OK',{duration:3000})
-      })
-      //console.log(this.questionFormGroup.value)
+      console.log('no ID has been passed')
+      this.snackbar.open('An error occurred!', 'OK',{duration:3000})
       this.router.navigate(['/index']);
     }
   }
@@ -78,10 +78,5 @@ export class QuestionFormComponent implements OnInit {
     }
   }
 
-
-  submit() {
-    this.createOrUpdateQuestion()
-    this.router.navigate(['/question-list'])
-  }
 }
 

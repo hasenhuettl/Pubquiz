@@ -8,6 +8,7 @@ export interface Question {
   question_string: string;
   master_answer: string;
   quiz: Quiz;
+  created_by_user: string;
 }
 
 @Injectable({providedIn: 'root'})

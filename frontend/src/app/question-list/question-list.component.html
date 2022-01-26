@@ -4,7 +4,7 @@
 </mat-form-field>
 
 <button mat-stroked-button style="background-color: #008d8d; margin-left: 10px; color: white"
-        [routerLink]="'/question-form/'">Create Question
+        [routerLink]="'/question-create/' + id">Create Question
 </button>
 <table mat-table style="width: 100%" [dataSource]="filteredQuestions" matSort class="mat-elevation-z8">
   <!-- ID Column -->
