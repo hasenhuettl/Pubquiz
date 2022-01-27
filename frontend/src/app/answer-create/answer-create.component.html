@@ -2,7 +2,7 @@
 
   <!-- Answer Input Field -->
   <mat-form-field>
-    <input matInput type="text" placeholder="Question" formControlName="user_answer">
+    <input matInput type="text" placeholder="Answer" formControlName="user_answer">
     <mat-hint align="end">Your Answer</mat-hint>
 
     <mat-error *ngIf="answerFormGroup.controls.user_answer.hasError('required')">

@@ -79,7 +79,7 @@ export class QuizFormComponent implements OnInit {
       return this.quizService.getQuizzes().pipe(map(quizzes => {
         const currentId = this.quizFormGroup.controls['id'].value;
         const currentName = this.quizFormGroup.controls['quiz_name'].value;
-        const existingQuiz = quizzes.find(quiz => quiz.quiz_name === currentName);
+        const existingQuiz = quizzes.find(quiz => quiz.quiz_name.toLowerCase() === currentName.toLowerCase());
         return existingQuiz && existingQuiz.id !== currentId ? {nameAlreadyExists: true} : null
       }))
     }

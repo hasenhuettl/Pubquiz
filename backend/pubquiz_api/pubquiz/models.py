@@ -26,7 +26,7 @@ class Question(models.Model):
 
 
 class UserAnswer(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.PROTECT, null=True)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, null=True)
     created_by_user = models.CharField(max_length=1024, null=True)
     is_true = models.BooleanField(default=False)
     # user = models.ForeignKey(django.contrib.auth.models.User)

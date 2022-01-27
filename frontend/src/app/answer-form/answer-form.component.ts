@@ -75,7 +75,10 @@ export class AnswerFormComponent implements OnInit {
       return this.answerService.getAnswers().pipe(map(answers => {
         const currentId = this.answerFormGroup.controls['id'].value;
         const currentAnswer = this.answerFormGroup.controls['user_answer'].value;
-        const existingAnswer = answers.find(answer => answer.user_answer === currentAnswer);
+        const currentQuestionId = this.answerFormGroup.controls['question'].value.id;
+        const existingAnswer = answers.find(answer =>
+          answer.user_answer.toLowerCase() === currentAnswer.toLowerCase() && answer.question.id == currentQuestionId
+        );
         return existingAnswer && existingAnswer.id !== currentId ? {nameAlreadyExists: true} : null
       }))
     }
