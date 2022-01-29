@@ -30,7 +30,6 @@ export class QuestionCreateComponent implements OnInit {
         id: new FormControl(null),
         question_string: new FormControl('', [Validators.required], [this.nameValidator()]),
         master_answer: new FormControl(''),
-        created_by_user: new FormControl(''),
         quiz: new FormControl(this.route.snapshot.paramMap.get('id'))
       }
     )

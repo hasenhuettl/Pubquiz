@@ -14,6 +14,7 @@ import {QuizService} from "../services/quiz.service";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {UserService} from "../services/user.service";
 
 
 @Component({
@@ -31,7 +32,8 @@ export class QuizFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private quizService: QuizService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private userService: UserService,
   ) {
     this.quizFormGroup = new FormGroup({
       id: new FormControl(null),
@@ -63,6 +65,9 @@ export class QuizFormComponent implements OnInit {
       })
       this.router.navigate(['/index']);
     } else {
+      //console.log(this.quizFormGroup.value)
+      console.log(this.userService.getUsername())
+      this.quizFormGroup.value.created_by_user = this.userService.getUsername()
       //console.log(this.quizFormGroup.value)
       this.quizService.createQuiz(this.quizFormGroup.value).subscribe(() => {
         this.snackbar.open('Quiz created successfully!', 'OK',{duration:3000})

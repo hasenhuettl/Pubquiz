@@ -6,6 +6,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {AnswerService} from "../services/answer.service";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-answer-create',
@@ -23,7 +24,8 @@ export class AnswerCreateComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private answerService: AnswerService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private userService: UserService,
   ) {
     this.answerFormGroup = new FormGroup({
         id: new FormControl(null),
@@ -42,6 +44,8 @@ export class AnswerCreateComponent implements OnInit {
   }
 
   createAnswer() {
+    console.log(this.userService.getUsername())
+    this.answerFormGroup.value.created_by_user = this.userService.getUsername()
     if (this.route.snapshot.paramMap.get('id')) {
       this.question_id = this.route.snapshot.paramMap.get('id')!;
     }

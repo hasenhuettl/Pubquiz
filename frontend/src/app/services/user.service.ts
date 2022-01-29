@@ -48,4 +48,10 @@ export class UserService {
     return permission in permissions;
   }
 
+  getUsername(): string {
+    const token = localStorage.getItem(this.accessTokenLocalStorageKey);
+    const decodedToken = this.jwtHelperService.decodeToken(token ? token : '');
+    return decodedToken.username;
+  }
+
 }

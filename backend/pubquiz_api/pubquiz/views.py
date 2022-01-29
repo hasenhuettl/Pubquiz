@@ -30,9 +30,11 @@ class QuizViewSet(viewsets.ViewSet):
 
     # POST http://127.0.0.1:8000/quiz/
     def create(self, request, format=None):
-        # if request.user.is_superuser:
+        if request.user.is_authenticated is False:
+            return Response(403)
         quiz = models.Quiz.objects.create(
             # quiz_master=request.data["quiz_master"],
+            created_by_user=request.data["created_by_user"],
             quiz_name=request.data["quiz_name"]
         )
         return Response(
@@ -58,6 +60,8 @@ class QuizViewSet(viewsets.ViewSet):
     def update(self, request, pk=None, format=None):
         try:
             quiz = models.Quiz.objects.get(pk=pk)
+            if quiz.created_by_user != request.user.username and (self.request.user.is_superuser is False):
+                return Response(status=403)
             # quiz.quiz_master = request.data["quiz_master"]
             quiz.quiz_name = request.data["quiz_name"]
             quiz.save()
@@ -79,14 +83,22 @@ class QuizViewSet(viewsets.ViewSet):
 
     # DELETE http://127.0.0.1:8000/quiz/id
     def destroy(self, request, pk=None, format=None):
-        models.Quiz.objects.filter(pk=pk).delete()
-        return Response(status=204)
+        # if self.request.user.is_authenticated:
+        if models.Quiz.objects.get(pk=pk).created_by_user == request.user.username or self.request.user.is_superuser:
+            models.Quiz.objects.filter(pk=pk).delete()
+            return Response(status=204)
+        else:
+            return Response(status=403)
 
 
 class QuestionViewSet(viewsets.ViewSet):
 
+    # GET http://127.0.0.1:8000/question/
     def list(self, request, format=None):
         queryset = models.Question.objects.all()
+        for query in queryset:
+            if query.quiz.created_by_user != request.user.username and (self.request.user.is_superuser is False):
+                query.master_answer = ''
 
         # GET http://127.0.0.1:8000/question/?order_by=id
         if request.GET.get("order_by") is not None:
@@ -97,11 +109,14 @@ class QuestionViewSet(viewsets.ViewSet):
 
     # POST http://127.0.0.1:8000/question/
     def create(self, request, format=None):
-        # if request.user.is_superuser:
+        if request.user.is_authenticated is False:
+            return Response(403)
+        quiz = models.Quiz.objects.get(pk=request.data["quiz"])
+        if quiz.created_by_user != request.user.username and (self.request.user.is_superuser is False):
+            return Response(status=403)
         question = models.Question.objects.create(
             # created_by_user=request.data["created_by_user"],
             quiz=models.Quiz.objects.get(id=request.data["quiz"]),
-            created_by_user=request.data["created_by_user"],
             question_string=request.data["question_string"],
             master_answer=request.data["master_answer"]
         )
@@ -110,9 +125,12 @@ class QuestionViewSet(viewsets.ViewSet):
         return Response(serializer.data, status=200)
 
         # GET: http://127.0.0.1:8000/question/id
+
     def retrieve(self, request, pk=None, format=None):
         try:
             question = models.Question.objects.get(pk=pk)
+            if question.quiz.created_by_user != request.user.username and (self.request.user.is_superuser is False):
+                question.master_answer = ''
             serializer = serializers.QuestionSerializer(question)
             return Response(serializer.data, status=200)
 
@@ -123,6 +141,8 @@ class QuestionViewSet(viewsets.ViewSet):
     def update(self, request, pk=None, format=None):
         try:
             question = models.Question.objects.get(pk=pk)
+            if question.quiz.created_by_user != request.user.username and (self.request.user.is_superuser is False):
+                return Response(status=403)
             question.question_string = request.data["question_string"]
             question.master_answer = request.data["master_answer"]
             question.save()
@@ -139,35 +159,44 @@ class QuestionViewSet(viewsets.ViewSet):
 
     # DELETE http://127.0.0.1:8000/question/id
     def destroy(self, request, pk=None, format=None):
-        models.Question.objects.filter(pk=pk).delete()
-        return Response(status=204)
-
+        question = models.Question.objects.get(pk=pk)
+        if question.quiz.created_by_user == request.user.username or self.request.user.is_superuser:
+            models.Question.objects.filter(pk=pk).delete()
+            return Response(status=204)
+        else:
+            return Response(status=403)
 
 
 class UserAnswerViewSet(viewsets.ViewSet):
     # GET http://127.0.0.1:8000/userAnswer/
     def list(self, request, format=None):
+
         queryset = models.UserAnswer.objects.all()
+        if self.request.user.is_superuser is False:
+            queryset = queryset.filter(created_by_user=request.user.username)
         serializer = serializers.UserAnswerSerializer(queryset, many=True)
         return Response(serializer.data, status=200)
 
     # GET http://127.0.0.1:8000/userAnswer/
     def create(self, request, format=None):
-        # if request.user.is_superuser:
+        if request.user.is_authenticated is False:
+            return Response(403)
         user_answer = models.UserAnswer.objects.create(
-            # created_by_user=request.data["created_by_user"],
+            created_by_user=request.data["created_by_user"],
             question=models.Question.objects.get(id=request.data["question"]),
-            #question_string=request.data["question_string"],
+            # question_string=request.data["question_string"],
             user_answer=request.data["user_answer"]
         )
         user_answer.save()
         serializer = serializers.UserAnswerSerializer(user_answer)
         return Response(serializer.data, status=200)
 
-    #GET http://127.0.0.1:8000/userAnswer/id
+    # GET http://127.0.0.1:8000/userAnswer/id
     def retrieve(self, request, pk=None, format=None):
         try:
             user_answer = models.UserAnswer.objects.get(pk=pk)
+            if user_answer.created_by_user != request.user.username and (self.request.user.is_superuser is False):
+                return Response(403)
             serializer = serializers.UserAnswerSerializer(user_answer)
             return Response(serializer.data, status=200)
 
@@ -177,15 +206,10 @@ class UserAnswerViewSet(viewsets.ViewSet):
     # PUT http://127.0.0.1:8000/userAnswer/id
     def update(self, request, pk=None, format=None):
         try:
-            # request.user.id. =
-            #
-            #
-            #
-            #
-            #
             user_answer = models.UserAnswer.objects.get(pk=pk)
+            if user_answer.created_by_user != request.user.username and (self.request.user.is_superuser is False):
+                return Response(403)
             user_answer.user_answer = request.data["user_answer"]
-            #question.master_answer = request.data["master_answer"]
             user_answer.save()
             serializer = serializers.UserAnswerSerializer(user_answer)
             return Response(serializer.data, status=200)
@@ -200,16 +224,8 @@ class UserAnswerViewSet(viewsets.ViewSet):
 
     # DELETE http://127.0.0.1:8000/userAnswer/id
     def destroy(self, request, pk=None, format=None):
+        user_answer = models.UserAnswer.objects.get(pk=pk)
+        if user_answer.created_by_user != request.user.username and (self.request.user.is_superuser is False):
+            return Response(403)
         models.UserAnswer.objects.filter(pk=pk).delete()
         return Response(status=204)
-
-"""
-class QuizMasterViewSet(viewsets.ViewSet):
-
-    # GET: http://127.0.0.1:8000/users/
-    def list(self, request, format=None):
-        queryset = models.Quiz.objects.all()
-        serializer = serializers.UserSerializer(queryset, many=True)
-        return Response(serializer.data, status=200)
-
-"""

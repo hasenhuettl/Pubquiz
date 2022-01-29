@@ -8,7 +8,6 @@ export interface Question {
   question_string: string;
   master_answer: string;
   quiz: Quiz;
-  created_by_user: string;
 }
 
 @Injectable({providedIn: 'root'})
@@ -16,9 +15,9 @@ export class QuestionService {
   availableQuestions: Question[] = [];
   constructor(
     private http: HttpClient,
-    private PubquizApiService: PubquizApiService
+    private PubquizApiService: PubquizApiService,
   ) {
-    this.getQuestions().subscribe(questions => this.availableQuestions = questions);
+     this.getQuestions().subscribe(questions => this.availableQuestions = questions);
   }
   getQuestions() {
     return this.http.get<Question[]>(`${this.PubquizApiService.base_url}/question/`);

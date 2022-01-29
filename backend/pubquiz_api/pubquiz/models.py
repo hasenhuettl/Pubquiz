@@ -16,11 +16,11 @@ class QuizMaster(AbstractUser):
 class Quiz(models.Model):
     # quiz_master = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     quiz_name = models.CharField(max_length=1024)
+    created_by_user = models.CharField(max_length=1024, null=True)
 
 
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, null=True)
-    created_by_user = models.CharField(max_length=1024, null=True)
     question_string = models.CharField(max_length=1024, null=True)
     master_answer = models.CharField(max_length=1024, null=True)
 
