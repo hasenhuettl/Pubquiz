@@ -15,7 +15,7 @@ Participants will be able to face off against other participants by themselves o
 *TODO:
 
 ## Project Proposal
-Click here to see the proposal: <a href="https://fhjoanneum-my.sharepoint.com/personal/michael_hoermann_edu_fh-joanneum_at/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fmichael%5Fhoermann%5Fedu%5Ffh%2Djoanneum%5Fat%2FDocuments%2FFH%2DJOANNEUM%2F5%2E%20Semester%2FSWENGS%2FProject%20Proposal%2FProject%20Proposal%20Online%20Pubquiz%20team2%2Epdf&parent=%2Fpersonal%2Fmichael%5Fhoermann%5Fedu%5Ffh%2Djoanneum%5Fat%2FDocuments%2FFH%2DJOANNEUM%2F5%2E%20Semester%2FSWENGS%2FProject%20Proposal">Pubquiz</a>
+Click on the link to see the proposal: <a href="https://fhjoanneum-my.sharepoint.com/personal/michael_hoermann_edu_fh-joanneum_at/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fmichael%5Fhoermann%5Fedu%5Ffh%2Djoanneum%5Fat%2FDocuments%2FFH%2DJOANNEUM%2F5%2E%20Semester%2FSWENGS%2FProject%20Proposal%2FProject%20Proposal%20Online%20Pubquiz%20team2%2Epdf&parent=%2Fpersonal%2Fmichael%5Fhoermann%5Fedu%5Ffh%2Djoanneum%5Fat%2FDocuments%2FFH%2DJOANNEUM%2F5%2E%20Semester%2FSWENGS%2FProject%20Proposal">Pubquiz</a>
 
 ## Installation
 
