@@ -34,12 +34,18 @@ Click on the link to see the proposal: <a href="https://fhjoanneum-my.sharepoint
    This project is made with Django v3.2.10.
    
    - Additional Requirements: Django REST Framework (https://jpadilla.github.io/django-rest-framework-jwt/)
-   - Setup:
+   - Setup for API:
+
             1. Install Django version 3.2.10 "pip install django==3.2.10"
+
             2. Install rest_framework and security: "pip install djangorestframework==3.12.4" and "pip install djangorestframework-jwt==1.11.0"
+
             3. Migrate migrations files "python manage.py migrate"
+
             4. Run the development server on localhost "python manage.py runserver"
+
             5. Create a superuser "python manage.py createsuperuser"
+
             6. New Models with migrations "python manage.py makemigrations" and "python manage.py migrate"
 
 * Access the website:
