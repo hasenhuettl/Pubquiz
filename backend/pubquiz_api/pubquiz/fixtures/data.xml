@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<django-objects version="1.0">
+  <object model="auth.permission" pk="1">
+    <field name="name" type="CharField">Can add log entry</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">1</field>
+    <field name="codename" type="CharField">add_logentry</field>
+  </object>
+  <object model="auth.permission" pk="2">
+    <field name="name" type="CharField">Can change log entry</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">1</field>
+    <field name="codename" type="CharField">change_logentry</field>
+  </object>
+  <object model="auth.permission" pk="3">
+    <field name="name" type="CharField">Can delete log entry</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">1</field>
+    <field name="codename" type="CharField">delete_logentry</field>
+  </object>
+  <object model="auth.permission" pk="4">
+    <field name="name" type="CharField">Can view log entry</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">1</field>
+    <field name="codename" type="CharField">view_logentry</field>
+  </object>
+  <object model="auth.permission" pk="5">
+    <field name="name" type="CharField">Can add permission</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">2</field>
+    <field name="codename" type="CharField">add_permission</field>
+  </object>
+  <object model="auth.permission" pk="6">
+    <field name="name" type="CharField">Can change permission</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">2</field>
+    <field name="codename" type="CharField">change_permission</field>
+  </object>
+  <object model="auth.permission" pk="7">
+    <field name="name" type="CharField">Can delete permission</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">2</field>
+    <field name="codename" type="CharField">delete_permission</field>
+  </object>
+  <object model="auth.permission" pk="8">
+    <field name="name" type="CharField">Can view permission</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">2</field>
+    <field name="codename" type="CharField">view_permission</field>
+  </object>
+  <object model="auth.permission" pk="9">
+    <field name="name" type="CharField">Can add group</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">3</field>
+    <field name="codename" type="CharField">add_group</field>
+  </object>
+  <object model="auth.permission" pk="10">
+    <field name="name" type="CharField">Can change group</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">3</field>
+    <field name="codename" type="CharField">change_group</field>
+  </object>
+  <object model="auth.permission" pk="11">
+    <field name="name" type="CharField">Can delete group</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">3</field>
+    <field name="codename" type="CharField">delete_group</field>
+  </object>
+  <object model="auth.permission" pk="12">
+    <field name="name" type="CharField">Can view group</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">3</field>
+    <field name="codename" type="CharField">view_group</field>
+  </object>
+  <object model="auth.permission" pk="13">
+    <field name="name" type="CharField">Can add user</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">4</field>
+    <field name="codename" type="CharField">add_user</field>
+  </object>
+  <object model="auth.permission" pk="14">
+    <field name="name" type="CharField">Can change user</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">4</field>
+    <field name="codename" type="CharField">change_user</field>
+  </object>
+  <object model="auth.permission" pk="15">
+    <field name="name" type="CharField">Can delete user</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">4</field>
+    <field name="codename" type="CharField">delete_user</field>
+  </object>
+  <object model="auth.permission" pk="16">
+    <field name="name" type="CharField">Can view user</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">4</field>
+    <field name="codename" type="CharField">view_user</field>
+  </object>
+  <object model="auth.permission" pk="17">
+    <field name="name" type="CharField">Can add content type</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">5</field>
+    <field name="codename" type="CharField">add_contenttype</field>
+  </object>
+  <object model="auth.permission" pk="18">
+    <field name="name" type="CharField">Can change content type</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">5</field>
+    <field name="codename" type="CharField">change_contenttype</field>
+  </object>
+  <object model="auth.permission" pk="19">
+    <field name="name" type="CharField">Can delete content type</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">5</field>
+    <field name="codename" type="CharField">delete_contenttype</field>
+  </object>
+  <object model="auth.permission" pk="20">
+    <field name="name" type="CharField">Can view content type</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">5</field>
+    <field name="codename" type="CharField">view_contenttype</field>
+  </object>
+  <object model="auth.permission" pk="21">
+    <field name="name" type="CharField">Can add session</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">6</field>
+    <field name="codename" type="CharField">add_session</field>
+  </object>
+  <object model="auth.permission" pk="22">
+    <field name="name" type="CharField">Can change session</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">6</field>
+    <field name="codename" type="CharField">change_session</field>
+  </object>
+  <object model="auth.permission" pk="23">
+    <field name="name" type="CharField">Can delete session</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">6</field>
+    <field name="codename" type="CharField">delete_session</field>
+  </object>
+  <object model="auth.permission" pk="24">
+    <field name="name" type="CharField">Can view session</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">6</field>
+    <field name="codename" type="CharField">view_session</field>
+  </object>
+  <object model="auth.permission" pk="25">
+    <field name="name" type="CharField">Can add quiz</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
+    <field name="codename" type="CharField">add_quiz</field>
+  </object>
+  <object model="auth.permission" pk="26">
+    <field name="name" type="CharField">Can change quiz</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
+    <field name="codename" type="CharField">change_quiz</field>
+  </object>
+  <object model="auth.permission" pk="27">
+    <field name="name" type="CharField">Can delete quiz</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
+    <field name="codename" type="CharField">delete_quiz</field>
+  </object>
+  <object model="auth.permission" pk="28">
+    <field name="name" type="CharField">Can view quiz</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
+    <field name="codename" type="CharField">view_quiz</field>
+  </object>
+  <object model="auth.permission" pk="29">
+    <field name="name" type="CharField">Can add question</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
+    <field name="codename" type="CharField">add_question</field>
+  </object>
+  <object model="auth.permission" pk="30">
+    <field name="name" type="CharField">Can change question</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
+    <field name="codename" type="CharField">change_question</field>
+  </object>
+  <object model="auth.permission" pk="31">
+    <field name="name" type="CharField">Can delete question</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
+    <field name="codename" type="CharField">delete_question</field>
+  </object>
+  <object model="auth.permission" pk="32">
+    <field name="name" type="CharField">Can view question</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
+    <field name="codename" type="CharField">view_question</field>
+  </object>
+  <object model="auth.permission" pk="33">
+    <field name="name" type="CharField">Can add user answer</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">9</field>
+    <field name="codename" type="CharField">add_useranswer</field>
+  </object>
+  <object model="auth.permission" pk="34">
+    <field name="name" type="CharField">Can change user answer</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">9</field>
+    <field name="codename" type="CharField">change_useranswer</field>
+  </object>
+  <object model="auth.permission" pk="35">
+    <field name="name" type="CharField">Can delete user answer</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">9</field>
+    <field name="codename" type="CharField">delete_useranswer</field>
+  </object>
+  <object model="auth.permission" pk="36">
+    <field name="name" type="CharField">Can view user answer</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">9</field>
+    <field name="codename" type="CharField">view_useranswer</field>
+  </object>
+  <object model="auth.user" pk="1">
+    <field name="password" type="CharField">pbkdf2_sha256$260000$SGWtHLrBCdarIb8K0acAvT$JrUqRJb6Wvz92c/UCY6jK2c1LNQoCT3bXimNlrI+Y7I=</field>
+    <field name="last_login" type="DateTimeField">2022-01-16T13:23:41.099156+00:00</field>
+    <field name="is_superuser" type="BooleanField">True</field>
+    <field name="username" type="CharField">admin</field>
+    <field name="first_name" type="CharField"></field>
+    <field name="last_name" type="CharField"></field>
+    <field name="email" type="CharField"></field>
+    <field name="is_staff" type="BooleanField">True</field>
+    <field name="is_active" type="BooleanField">True</field>
+    <field name="date_joined" type="DateTimeField">2022-01-16T13:23:21.741011+00:00</field>
+    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
+    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
+  </object>
+  <object model="auth.user" pk="2">
+    <field name="password" type="CharField">pbkdf2_sha256$260000$EIClN3LobJJKcoALcgKsct$i0DA/Y23rIQexn2gAzoh8bW6n9AVPfW7PBl4fAcIaJQ=</field>
+    <field name="last_login" type="DateTimeField"><None></None></field>
+    <field name="is_superuser" type="BooleanField">False</field>
+    <field name="username" type="CharField">userA</field>
+    <field name="first_name" type="CharField"></field>
+    <field name="last_name" type="CharField"></field>
+    <field name="email" type="CharField"></field>
+    <field name="is_staff" type="BooleanField">False</field>
+    <field name="is_active" type="BooleanField">True</field>
+    <field name="date_joined" type="DateTimeField">2022-01-29T17:07:21.022100+00:00</field>
+    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
+    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
+  </object>
+  <object model="auth.user" pk="3">
+    <field name="password" type="CharField">pbkdf2_sha256$260000$k0oC6HcuzwGCqFxLPOhaVF$mURuaX5kt8b04e5K9YccMbG2iMBC94pta/Gw4FiZvP0=</field>
+    <field name="last_login" type="DateTimeField"><None></None></field>
+    <field name="is_superuser" type="BooleanField">False</field>
+    <field name="username" type="CharField">userB</field>
+    <field name="first_name" type="CharField"></field>
+    <field name="last_name" type="CharField"></field>
+    <field name="email" type="CharField"></field>
+    <field name="is_staff" type="BooleanField">False</field>
+    <field name="is_active" type="BooleanField">True</field>
+    <field name="date_joined" type="DateTimeField">2022-01-29T23:14:05.088915+00:00</field>
+    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
+    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
+  </object>
+  <object model="contenttypes.contenttype" pk="1">
+    <field name="app_label" type="CharField">admin</field>
+    <field name="model" type="CharField">logentry</field>
+  </object>
+  <object model="contenttypes.contenttype" pk="2">
+    <field name="app_label" type="CharField">auth</field>
+    <field name="model" type="CharField">permission</field>
+  </object>
+  <object model="contenttypes.contenttype" pk="3">
+    <field name="app_label" type="CharField">auth</field>
+    <field name="model" type="CharField">group</field>
+  </object>
+  <object model="contenttypes.contenttype" pk="4">
+    <field name="app_label" type="CharField">auth</field>
+    <field name="model" type="CharField">user</field>
+  </object>
+  <object model="contenttypes.contenttype" pk="5">
+    <field name="app_label" type="CharField">contenttypes</field>
+    <field name="model" type="CharField">contenttype</field>
+  </object>
+  <object model="contenttypes.contenttype" pk="6">
+    <field name="app_label" type="CharField">sessions</field>
+    <field name="model" type="CharField">session</field>
+  </object>
+  <object model="contenttypes.contenttype" pk="7">
+    <field name="app_label" type="CharField">pubquiz</field>
+    <field name="model" type="CharField">quiz</field>
+  </object>
+  <object model="contenttypes.contenttype" pk="8">
+    <field name="app_label" type="CharField">pubquiz</field>
+    <field name="model" type="CharField">question</field>
+  </object>
+  <object model="contenttypes.contenttype" pk="9">
+    <field name="app_label" type="CharField">pubquiz</field>
+    <field name="model" type="CharField">useranswer</field>
+  </object>
+  <object model="pubquiz.quiz" pk="17">
+    <field name="quiz_name" type="CharField">Steirerpub 20.12 2021</field>
+    <field name="created_by_user" type="CharField">admin</field>
+  </object>
+  <object model="pubquiz.quiz" pk="18">
+    <field name="quiz_name" type="CharField">Office-Pub: 18.01 2022</field>
+    <field name="created_by_user" type="CharField">admin</field>
+  </object>
+  <object model="pubquiz.quiz" pk="19">
+    <field name="quiz_name" type="CharField">IMA Pubquiz</field>
+    <field name="created_by_user" type="CharField">admin</field>
+  </object>
+  <object model="pubquiz.quiz" pk="21">
+    <field name="quiz_name" type="CharField">eHealth Pubquiz</field>
+    <field name="created_by_user" type="CharField">admin</field>
+  </object>
+  <object model="pubquiz.quiz" pk="22">
+    <field name="quiz_name" type="CharField">Marketing &amp; eCommerce</field>
+    <field name="created_by_user" type="CharField">admin</field>
+  </object>
+  <object model="pubquiz.quiz" pk="27">
+    <field name="quiz_name" type="CharField">ima19 pubquiz</field>
+    <field name="created_by_user" type="CharField">admin</field>
+  </object>
+  <object model="pubquiz.quiz" pk="36">
+    <field name="quiz_name" type="CharField">admin</field>
+    <field name="created_by_user" type="CharField">admin</field>
+  </object>
+  <object model="pubquiz.quiz" pk="37">
+    <field name="quiz_name" type="CharField">userQuiz</field>
+    <field name="created_by_user" type="CharField">userA</field>
+  </object>
+  <object model="pubquiz.quiz" pk="38">
+    <field name="quiz_name" type="CharField">User A Quiz</field>
+    <field name="created_by_user" type="CharField">userA</field>
+  </object>
+  <object model="pubquiz.question" pk="30">
+    <field name="quiz" rel="ManyToOneRel" to="pubquiz.quiz">17</field>
+    <field name="question_string" type="CharField">Wie gro� ist die gr��te Lederhose?</field>
+    <field name="master_answer" type="CharField">5,52 Meter</field>
+  </object>
+  <object model="pubquiz.question" pk="31">
+    <field name="quiz" rel="ManyToOneRel" to="pubquiz.quiz">17</field>
+    <field name="question_string" type="CharField">Wieviel Einwohner hat Graz?</field>
+    <field name="master_answer" type="CharField">291 134</field>
+  </object>
+  <object model="pubquiz.question" pk="32">
+    <field name="quiz" rel="ManyToOneRel" to="pubquiz.quiz">17</field>
+    <field name="question_string" type="CharField">Wer ist aktueller B�rgermeister in Graz?</field>
+    <field name="master_answer" type="CharField">Elke Kahr</field>
+  </object>
+  <object model="pubquiz.question" pk="33">
+    <field name="quiz" rel="ManyToOneRel" to="pubquiz.quiz">19</field>
+    <field name="question_string" type="CharField">Bestes Protokoll f�r Unity-Multiplayer?</field>
+    <field name="master_answer" type="CharField">Nicht MQTT!</field>
+  </object>
+  <object model="pubquiz.question" pk="34">
+    <field name="quiz" rel="ManyToOneRel" to="pubquiz.quiz">19</field>
+    <field name="question_string" type="CharField">In welchem Geb�ude ist IMA?</field>
+    <field name="master_answer" type="CharField">Eckertstra�e 30i</field>
+  </object>
+  <object model="pubquiz.question" pk="35">
+    <field name="quiz" rel="ManyToOneRel" to="pubquiz.quiz">19</field>
+    <field name="question_string" type="CharField">Routing-Protokoll im Internet?</field>
+    <field name="master_answer" type="CharField">BGP</field>
+  </object>
+  <object model="pubquiz.question" pk="36">
+    <field name="quiz" rel="ManyToOneRel" to="pubquiz.quiz">19</field>
+    <field name="question_string" type="CharField">99,99% der Fehlerquellen in Serveradministration</field>
+    <field name="master_answer" type="CharField">DNS</field>
+  </object>
+  <object model="pubquiz.question" pk="41">
+    <field name="quiz" rel="ManyToOneRel" to="pubquiz.quiz">27</field>
+    <field name="question_string" type="CharField">asdf</field>
+    <field name="master_answer" type="CharField">fdas</field>
+  </object>
+  <object model="pubquiz.question" pk="42">
+    <field name="quiz" rel="ManyToOneRel" to="pubquiz.quiz">27</field>
+    <field name="question_string" type="CharField">asdffds</field>
+    <field name="master_answer" type="CharField">assdfd</field>
+  </object>
+  <object model="pubquiz.question" pk="49">
+    <field name="quiz" rel="ManyToOneRel" to="pubquiz.quiz">27</field>
+    <field name="question_string" type="CharField">asdffasd</field>
+    <field name="master_answer" type="CharField">asdf</field>
+  </object>
+  <object model="pubquiz.question" pk="53">
+    <field name="quiz" rel="ManyToOneRel" to="pubquiz.quiz">36</field>
+    <field name="question_string" type="CharField">Admin Frage 1</field>
+    <field name="master_answer" type="CharField">antwort</field>
+  </object>
+  <object model="pubquiz.question" pk="54">
+    <field name="quiz" rel="ManyToOneRel" to="pubquiz.quiz">36</field>
+    <field name="question_string" type="CharField">Admin Frage 2</field>
+    <field name="master_answer" type="CharField"></field>
+  </object>
+  <object model="pubquiz.question" pk="55">
+    <field name="quiz" rel="ManyToOneRel" to="pubquiz.quiz">37</field>
+    <field name="question_string" type="CharField">user Frage</field>
+    <field name="master_answer" type="CharField">antwort</field>
+  </object>
+  <object model="pubquiz.question" pk="56">
+    <field name="quiz" rel="ManyToOneRel" to="pubquiz.quiz">38</field>
+    <field name="question_string" type="CharField">User A Frage</field>
+    <field name="master_answer" type="CharField">antwort</field>
+  </object>
+  <object model="pubquiz.useranswer" pk="35">
+    <field name="question" rel="ManyToOneRel" to="pubquiz.question">53</field>
+    <field name="created_by_user" type="CharField">admin</field>
+    <field name="is_true" type="BooleanField">False</field>
+    <field name="user_answer" type="CharField">antwort admin</field>
+  </object>
+  <object model="pubquiz.useranswer" pk="36">
+    <field name="question" rel="ManyToOneRel" to="pubquiz.question">53</field>
+    <field name="created_by_user" type="CharField">admin</field>
+    <field name="is_true" type="BooleanField">False</field>
+    <field name="user_answer" type="CharField">antwort 2 admin</field>
+  </object>
+  <object model="pubquiz.useranswer" pk="39">
+    <field name="question" rel="ManyToOneRel" to="pubquiz.question">53</field>
+    <field name="created_by_user" type="CharField">userA</field>
+    <field name="is_true" type="BooleanField">False</field>
+    <field name="user_answer" type="CharField">asdfas</field>
+  </object>
+  <object model="pubquiz.useranswer" pk="40">
+    <field name="question" rel="ManyToOneRel" to="pubquiz.question">55</field>
+    <field name="created_by_user" type="CharField">userA</field>
+    <field name="is_true" type="BooleanField">False</field>
+    <field name="user_answer" type="CharField">user frage nr. 1</field>
+  </object>
+  <object model="pubquiz.useranswer" pk="41">
+    <field name="question" rel="ManyToOneRel" to="pubquiz.question">55</field>
+    <field name="created_by_user" type="CharField">userB</field>
+    <field name="is_true" type="BooleanField">False</field>
+    <field name="user_answer" type="CharField">user B Antwort</field>
+  </object>
+  <object model="pubquiz.useranswer" pk="42">
+    <field name="question" rel="ManyToOneRel" to="pubquiz.question">55</field>
+    <field name="created_by_user" type="CharField">userA</field>
+    <field name="is_true" type="BooleanField">False</field>
+    <field name="user_answer" type="CharField">asdf</field>
+  </object>
+  <object model="pubquiz.useranswer" pk="44">
+    <field name="question" rel="ManyToOneRel" to="pubquiz.question">30</field>
+    <field name="created_by_user" type="CharField">userA</field>
+    <field name="is_true" type="BooleanField">False</field>
+    <field name="user_answer" type="CharField">2 Meter</field>
+  </object>
+</django-objects>

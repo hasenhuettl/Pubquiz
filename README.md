@@ -13,7 +13,7 @@ Participants will be able to face off against other participants by themselves o
 
 
 ## Project Proposal
-Click on the link to see the proposal: <a href="https://fhjoanneum-my.sharepoint.com/personal/michael_hoermann_edu_fh-joanneum_at/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fmichael%5Fhoermann%5Fedu%5Ffh%2Djoanneum%5Fat%2FDocuments%2FFH%2DJOANNEUM%2F5%2E%20Semester%2FSWENGS%2FProject%20Proposal%2FProject%20Proposal%20Online%20Pubquiz%20team2%2Epdf&parent=%2Fpersonal%2Fmichael%5Fhoermann%5Fedu%5Ffh%2Djoanneum%5Fat%2FDocuments%2FFH%2DJOANNEUM%2F5%2E%20Semester%2FSWENGS%2FProject%20Proposal">Pubquiz</a>
+Click on the link to see the proposal: <a href="https://github.com/hasenhuettl/Pubquiz/blob/main/Project%20Proposal%20Online%20Pubquiz.docx">Pubquiz</a>
 
 ## Installation:
 * Host this application:
@@ -31,22 +31,23 @@ Click on the link to see the proposal: <a href="https://fhjoanneum-my.sharepoint
           
     
    ### Backend: 
-   This project is made with Django v3.2.10.
+   This project is made with Django v3.2.9.
    
    - Additional Requirements: Django REST Framework (https://jpadilla.github.io/django-rest-framework-jwt/)
    - Setup for API:
 
-            1. Install Django version 3.2.10 "pip install django==3.2.10"
+            1. Install dependencies via backend/requirements.txt
+            	1a. Optionally, install packets manually with "pip install django==3.2.9"
+	        1b. as well as rest_framework and security: "pip install djangorestframework==3.12.4" and "pip install djangorestframework-jwt==1.11.0"
 
-            2. Install rest_framework and security: "pip install djangorestframework==3.12.4" and "pip install djangorestframework-jwt==1.11.0"
+            2. Migrate migrations files "python manage.py migrate"
 
-            3. Migrate migrations files "python manage.py migrate"
+	    3. Import Database data: navigate to project\backend\pubquiz_api\pubquiz\fixtures\, then issue: "python manage.py loaddata data.xml"
 
             4. Run the development server on localhost "python manage.py runserver"
 
-            5. Create a superuser "python manage.py createsuperuser"
-
-            6. New Models with migrations "python manage.py makemigrations" and "python manage.py migrate"
+            5. Integrate new Models with migrations "python manage.py makemigrations" and "python manage.py migrate"
 
 * Access the website:
-    - An up to date web browser, we recommend using Mozilla Firefox, Google Chrome or Safari.
+    - An up to date web browser, for example Google Chrome or Microsoft Edge.
+    - current Test User: admin (PW: admin); userA (PW: userA); userB (PW: userB)

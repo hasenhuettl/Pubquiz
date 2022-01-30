@@ -16,14 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from rest_framework.response import Response
-from rest_framework.exceptions import AuthenticationFailed
-from rest_framework import status
+# from rest_framework.response import Response
+# from rest_framework.exceptions import AuthenticationFailed
+# from rest_framework import status
 
 from pubquiz.urls import router
 
-from rest_framework_jwt.views import obtain_jwt_token, ObtainJSONWebToken
-from django.contrib.auth.models import User
+from rest_framework_jwt.views import obtain_jwt_token  # , ObtainJSONWebToken
+
+# from django.contrib.auth.models import User
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -1,18 +1,17 @@
-from django.contrib.auth.decorators import user_passes_test
+# from django.contrib.auth.decorators import user_passes_test
 from rest_framework import viewsets
-from rest_framework.permissions import DjangoModelPermissions
+# from rest_framework.permissions import DjangoModelPermissions
 from rest_framework.response import Response
 from rest_framework import permissions
 
-from datetime import datetime
+# from datetime import datetime
 
 from . import serializers
 from . import models
 
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 
 
-# Quiz:
 class QuizViewSet(viewsets.ViewSet):
     permission_classes = [permissions.IsAuthenticated]
     queryset = models.Quiz.objects.all()
@@ -36,14 +35,12 @@ class QuizViewSet(viewsets.ViewSet):
         if request.user.is_authenticated is False:
             return Response(403)
         quiz = models.Quiz.objects.create(
-            # quiz_master=request.data["quiz_master"],
             created_by_user=request.data["created_by_user"],
             quiz_name=request.data["quiz_name"]
         )
         return Response(
             {
                 "id": quiz.pk,
-                # "quiz_master": quiz.quiz_master,
                 "quiz_name": quiz.quiz_name
             },
             status=201
@@ -65,13 +62,11 @@ class QuizViewSet(viewsets.ViewSet):
             quiz = models.Quiz.objects.get(pk=pk)
             if quiz.created_by_user != request.user.username and (self.request.user.is_superuser is False):
                 return Response(status=403)
-            # quiz.quiz_master = request.data["quiz_master"]
             quiz.quiz_name = request.data["quiz_name"]
             quiz.save()
             return Response(
                 {
                     "id": quiz.pk,
-                    # "quiz_master": quiz.quiz_master,
                     "quiz_name": quiz.quiz_name
                 },
                 status=200
@@ -118,7 +113,6 @@ class QuestionViewSet(viewsets.ViewSet):
         if quiz.created_by_user != request.user.username and (self.request.user.is_superuser is False):
             return Response(status=403)
         question = models.Question.objects.create(
-            # created_by_user=request.data["created_by_user"],
             quiz=models.Quiz.objects.get(id=request.data["quiz"]),
             question_string=request.data["question_string"],
             master_answer=request.data["master_answer"]
@@ -187,7 +181,6 @@ class UserAnswerViewSet(viewsets.ViewSet):
         user_answer = models.UserAnswer.objects.create(
             created_by_user=request.data["created_by_user"],
             question=models.Question.objects.get(id=request.data["question"]),
-            # question_string=request.data["question_string"],
             user_answer=request.data["user_answer"]
         )
         user_answer.save()
