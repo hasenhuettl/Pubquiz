@@ -36,17 +36,20 @@ Click on the link to see the proposal: <a href="https://github.com/hasenhuettl/P
    - Additional Requirements: Django REST Framework (https://jpadilla.github.io/django-rest-framework-jwt/)
    - Setup for API:
 
-            1. Install dependencies via backend/requirements.txt
-            	1a. Optionally, install packets manually with "pip install django==3.2.9"
-	        1b. as well as rest_framework and security: "pip install djangorestframework==3.12.4" and "pip install djangorestframework-jwt==1.11.0"
-
-            2. Migrate migrations files "python manage.py migrate"
-
-	    3. Import Database data: navigate to project\backend\pubquiz_api\pubquiz\fixtures\, then issue: "python manage.py loaddata data.xml"
-
-            4. Run the development server on localhost "python manage.py runserver"
-
-            5. Integrate new Models with migrations "python manage.py makemigrations" and "python manage.py migrate"
+		1. Install dependencies via backend/requirements.txt
+            
+			aa. Optionally, install packets manually with "pip install django==3.2.9"
+		
+			ab. as well as rest_framework and security: "pip install djangorestframework==3.12.4" and "pip install djangorestframework-jwt==1.11.0"
+		
+		2. Migrate migrations files "python manage.py migrate"
+            
+		3. Import Database data: navigate to project\backend\pubquiz_api\pubquiz\fixtures\, then issue: "python manage.py loaddata data.xml"
+	    
+		4. Run the development server on localhost "python manage.py runserver"
+            
+		6. Integrate new Models with migrations "python manage.py makemigrations" and "python manage.py migrate"
+            
 
 * Access the website:
     - An up to date web browser, for example Google Chrome or Microsoft Edge.
