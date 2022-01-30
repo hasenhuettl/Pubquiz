@@ -1,6 +1,11 @@
+<button mat-stroked-button style="background-color: #c70025; margin: 10px; color: white"
+        [routerLink]="'/question-list/' + quiz_id">Back to Question List
+</button>
+
 <button mat-stroked-button style="background-color: #008d8d; margin: 10px; color: white"
         [routerLink]="'/answer-create/' + id">Create Answer
 </button>
+
 <table mat-table style="width: 100%" [dataSource]="filteredAnswers" >
   <!-- ID Column -->
   <ng-container matColumnDef="id">

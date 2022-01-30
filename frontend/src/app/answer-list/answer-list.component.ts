@@ -14,10 +14,12 @@ export class AnswerListComponent implements OnInit {
 
   displayedColumns = ['id', 'user_answer', 'edit', 'delete'];
   answers: Answer[] = [];
+  answer: Answer | undefined;
   filteredAnswers: Answer[] = [];
   id = '';
+  quiz_id = '';
 
-  answer: any | Question = {};
+  question: any | Question = {};
 
   constructor(private answerService: AnswerService,
               private route: ActivatedRoute,
@@ -31,7 +33,9 @@ export class AnswerListComponent implements OnInit {
 
     this.answerService.getAnswers().subscribe((response) => {
       this.answers = response
-      this.filter(this.answer.user_answer)
+      this.filter(this.question.user_answer)
+      this.answer = this.answers[0]
+      this.quiz_id = this.answer.question.quiz.id.toString()
     })
 
   }
