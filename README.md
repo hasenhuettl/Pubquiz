@@ -15,7 +15,7 @@ Participants will be able to face off against other participants by themselves o
 *TODO:
 
 ## Project Proposal
-Link: https://fhjoanneum-my.sharepoint.com/:b:/g/personal/michael_hoermann_edu_fh-joanneum_at/EZlTg8F9PXxBu4ocyRsx_D8BkyHDqhsgW34OA4LFMETL3g?e=nvTabN
+Link: Pubquiz
 
 ## Installation
 
