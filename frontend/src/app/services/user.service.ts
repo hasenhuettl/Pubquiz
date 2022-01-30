@@ -48,6 +48,12 @@ export class UserService {
     return permission in permissions;
   }
 
+  isOwner(user:string): boolean {
+    const token = localStorage.getItem(this.accessTokenLocalStorageKey);
+    const decodedToken = this.jwtHelperService.decodeToken(token ? token : '');
+    return decodedToken.username == user;
+  }
+
   getUsername(): string {
     const token = localStorage.getItem(this.accessTokenLocalStorageKey);
     const decodedToken = this.jwtHelperService.decodeToken(token ? token : '');
