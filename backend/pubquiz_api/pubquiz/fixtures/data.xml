@@ -180,48 +180,6 @@
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">9</field>
     <field name="codename" type="CharField">view_useranswer</field>
   </object>
-  <object model="auth.user" pk="1">
-    <field name="password" type="CharField">pbkdf2_sha256$260000$SGWtHLrBCdarIb8K0acAvT$JrUqRJb6Wvz92c/UCY6jK2c1LNQoCT3bXimNlrI+Y7I=</field>
-    <field name="last_login" type="DateTimeField">2022-01-16T13:23:41.099156+00:00</field>
-    <field name="is_superuser" type="BooleanField">True</field>
-    <field name="username" type="CharField">admin</field>
-    <field name="first_name" type="CharField"></field>
-    <field name="last_name" type="CharField"></field>
-    <field name="email" type="CharField"></field>
-    <field name="is_staff" type="BooleanField">True</field>
-    <field name="is_active" type="BooleanField">True</field>
-    <field name="date_joined" type="DateTimeField">2022-01-16T13:23:21.741011+00:00</field>
-    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
-    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
-  </object>
-  <object model="auth.user" pk="2">
-    <field name="password" type="CharField">pbkdf2_sha256$260000$EIClN3LobJJKcoALcgKsct$i0DA/Y23rIQexn2gAzoh8bW6n9AVPfW7PBl4fAcIaJQ=</field>
-    <field name="last_login" type="DateTimeField"><None></None></field>
-    <field name="is_superuser" type="BooleanField">False</field>
-    <field name="username" type="CharField">userA</field>
-    <field name="first_name" type="CharField"></field>
-    <field name="last_name" type="CharField"></field>
-    <field name="email" type="CharField"></field>
-    <field name="is_staff" type="BooleanField">False</field>
-    <field name="is_active" type="BooleanField">True</field>
-    <field name="date_joined" type="DateTimeField">2022-01-29T17:07:21.022100+00:00</field>
-    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
-    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
-  </object>
-  <object model="auth.user" pk="3">
-    <field name="password" type="CharField">pbkdf2_sha256$260000$k0oC6HcuzwGCqFxLPOhaVF$mURuaX5kt8b04e5K9YccMbG2iMBC94pta/Gw4FiZvP0=</field>
-    <field name="last_login" type="DateTimeField"><None></None></field>
-    <field name="is_superuser" type="BooleanField">False</field>
-    <field name="username" type="CharField">userB</field>
-    <field name="first_name" type="CharField"></field>
-    <field name="last_name" type="CharField"></field>
-    <field name="email" type="CharField"></field>
-    <field name="is_staff" type="BooleanField">False</field>
-    <field name="is_active" type="BooleanField">True</field>
-    <field name="date_joined" type="DateTimeField">2022-01-29T23:14:05.088915+00:00</field>
-    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
-    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
-  </object>
   <object model="contenttypes.contenttype" pk="1">
     <field name="app_label" type="CharField">admin</field>
     <field name="model" type="CharField">logentry</field>

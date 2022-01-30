@@ -45,12 +45,13 @@ Click on the link to see the proposal: <a href="https://github.com/hasenhuettl/P
 		2. Migrate migrations files "python manage.py migrate"
             
 		3. Import Database data: navigate to project\backend\pubquiz_api\pubquiz\fixtures\, then issue: "python manage.py loaddata data.xml"
+    
+        4. Use "python manage.py createsuperuser" to create admin and user profiles
 	    
-		4. Run the development server on localhost "python manage.py runserver"
+		5. Run the development server on localhost "python manage.py runserver"
             
 		6. Integrate new Models with migrations "python manage.py makemigrations" and "python manage.py migrate"
             
 
 * Access the website:
     - An up to date web browser, for example Google Chrome or Microsoft Edge.
-    - current Test User: admin (PW: admin); userA (PW: userA); userB (PW: userB)
