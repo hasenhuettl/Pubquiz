@@ -11,16 +11,28 @@ Participants will be able to face off against other participants by themselves o
 * Paul Kunisch     (https://github.com/paulkunisch)
 
 
-## Requirements
-*TODO:
 
 ## Project Proposal
 Click on the link to see the proposal: <a href="https://fhjoanneum-my.sharepoint.com/personal/michael_hoermann_edu_fh-joanneum_at/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fmichael%5Fhoermann%5Fedu%5Ffh%2Djoanneum%5Fat%2FDocuments%2FFH%2DJOANNEUM%2F5%2E%20Semester%2FSWENGS%2FProject%20Proposal%2FProject%20Proposal%20Online%20Pubquiz%20team2%2Epdf&parent=%2Fpersonal%2Fmichael%5Fhoermann%5Fedu%5Ffh%2Djoanneum%5Fat%2FDocuments%2FFH%2DJOANNEUM%2F5%2E%20Semester%2FSWENGS%2FProject%20Proposal">Pubquiz</a>
 
-## Installation
-
-What you need to:
+## Installation:
 * Host this application:
-    - TODO:
+
+   # Frontend: 
+   This project is made with Angular CLI version 12.2.13.
+   
+   - Libraries: Material Design (https://material.angular.io/)
+   - Additional Requirements: NodeJS (https://nodejs.org/en/download/)
+   - Server: 
+                - Run "ng serve" for a dev server. 
+                - Navigate to http://localhost:4200/
+                - Run "ng build" to build the project.
+                - For more help on the Angular CLI use "ng help".   
+    
+   # Backend: 
+   This project is made with Django v3.2.10.
+   
+    
+
 * Access the website:
-    - An up to date web browser, we recommend using Mozilla Firefox or Google Chrome.
+    - An up to date web browser, we recommend using Mozilla Firefox, Google Chrome or Safari.
