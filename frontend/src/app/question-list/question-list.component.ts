@@ -57,7 +57,7 @@ export class QuestionListComponent implements OnInit {
   }
 
   isAllowed(user: string): boolean{
-    return this.userService.isOwner(user) || this.userService.hasPermission('view_quiz')
+    return this.userService.isOwner(user) || this.userService.hasPermission('pubquiz.delete_quiz')
   }
 
   deleteQuestion(question: Question): void {

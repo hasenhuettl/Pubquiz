@@ -5,6 +5,7 @@ import { PubquizApiService } from "./pubquiz-api.service";
 export interface Quiz {
   id: number;
   quiz_name: string;
+  created_by_user:string;
 }
 
 @Injectable({providedIn: 'root'})

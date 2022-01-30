@@ -47,7 +47,7 @@ export class IndexComponent implements OnInit {
   }
 
   isAllowed(user: string): boolean{
-    return this.userService.isOwner(user) || this.userService.hasPermission('view_quiz')
+    return this.userService.isOwner(user) || this.userService.hasPermission('pubquiz.delete_quiz')
   }
 
   deleteQuiz(quiz: Quiz): void {

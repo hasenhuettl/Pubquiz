@@ -14,6 +14,9 @@ from django.contrib.auth.models import User
 
 # Quiz:
 class QuizViewSet(viewsets.ViewSet):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    queryset = models.Quiz.objects.all()
+
     # GET: http://127.0.0.1:8000/quiz/
     def list(self, request, format=None):
 
@@ -83,7 +86,7 @@ class QuizViewSet(viewsets.ViewSet):
 
     # DELETE http://127.0.0.1:8000/quiz/id
     def destroy(self, request, pk=None, format=None):
-        # if self.request.user.is_authenticated:
+
         if models.Quiz.objects.get(pk=pk).created_by_user == request.user.username or self.request.user.is_superuser:
             models.Quiz.objects.filter(pk=pk).delete()
             return Response(status=204)
