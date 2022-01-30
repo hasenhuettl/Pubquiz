@@ -44,7 +44,7 @@
   <ng-container matColumnDef="edit">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <button mat-raised-button color="primary" [routerLink]="'/question-form/' + element.id">Edit</button>
+      <button mat-raised-button color="primary" *ngIf="isAllowed(element.quiz.created_by_user)" [routerLink]="'/question-form/' + element.id">Edit</button>
       <!--<button mat-raised-button color="primary" *ngIf="userService.hasPermission('change_question')" color="primary"
       [routerLink]="'/movie-form/' + element.id">Edit</button>-->
     </td>
@@ -54,7 +54,7 @@
   <ng-container matColumnDef="delete">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
-      <button mat-raised-button color="warn" (click)="confirmDelete(element)">Delete</button>
+      <button mat-raised-button color="warn" *ngIf="isAllowed(element.quiz.created_by_user)" (click)="confirmDelete(element)">Delete</button>
     </td>
   </ng-container>
 

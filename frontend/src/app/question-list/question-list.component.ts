@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Question, QuestionService} from "../services/question.service";
 import {FormControl} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-question-list',
@@ -19,6 +20,7 @@ export class QuestionListComponent implements OnInit {
 
   constructor(private questionService: QuestionService,
               private route: ActivatedRoute,
+              private userService: UserService,
   ) {  }
 
   ngOnInit(): void {
@@ -52,6 +54,10 @@ export class QuestionListComponent implements OnInit {
       }
       )
     }
+  }
+
+  isAllowed(user: string): boolean{
+    return this.userService.isOwner(user) || this.userService.hasPermission('view_quiz')
   }
 
   deleteQuestion(question: Question): void {

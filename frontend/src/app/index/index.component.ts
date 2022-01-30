@@ -20,6 +20,7 @@ export class IndexComponent implements OnInit {
 
   constructor(private quizService: QuizService,
               private route: ActivatedRoute,
+              private userService: UserService,
   ) {
   }
 
@@ -43,6 +44,10 @@ export class IndexComponent implements OnInit {
         return !filterValue || a.quiz_name.toLowerCase().includes(filterValue.toLowerCase())
       }
     )
+  }
+
+  isAllowed(user: string): boolean{
+    return this.userService.isOwner(user) || this.userService.hasPermission('view_quiz')
   }
 
   deleteQuiz(quiz: Quiz): void {
