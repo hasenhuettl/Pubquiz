@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
@@ -28,13 +28,13 @@ export class AnswerFormComponent implements OnInit {
     private answerService: AnswerService,
     private userService: UserService,
     private snackbar: MatSnackBar,
-    ) {
+  ) {
     this.answerFormGroup = new FormGroup({
-      id: new FormControl(),
-      user_answer: new FormControl('', [Validators.required], [this.answerValidator()]),
-      created_by_user: new FormControl(''),
-      question: new FormControl(),
-      is_true: new FormControl(false)
+        id: new FormControl(),
+        user_answer: new FormControl('', [Validators.required], [this.answerValidator()]),
+        created_by_user: new FormControl(''),
+        question: new FormControl(),
+        is_true: new FormControl(false)
       }
     )
   }
@@ -44,9 +44,10 @@ export class AnswerFormComponent implements OnInit {
       this.answer_id = this.route.snapshot.paramMap.get('id')!;
     }
     this.submitButtonText = 'Update';
-    this.answerService.getAnswer(this.answer_id).subscribe(answer =>
-    { this.answerFormGroup.patchValue(answer)
-      this.question_id = this.answerFormGroup.controls['question'].value.id});
+    this.answerService.getAnswer(this.answer_id).subscribe(answer => {
+      this.answerFormGroup.patchValue(answer)
+      this.question_id = this.answerFormGroup.controls['question'].value.id
+    });
   }
 
   updateAnswer() {
@@ -54,17 +55,13 @@ export class AnswerFormComponent implements OnInit {
       this.answer_id = this.route.snapshot.paramMap.get('id')!;
     }
     if (this.answer_id) {
-      console.log(this.answerFormGroup.value)
       this.question_id = this.answerFormGroup.controls['question'].value.id
-      console.log(this.answerFormGroup.value)
       this.answerService.updateAnswer(this.answerFormGroup.value).subscribe(() => {
-        this.snackbar.open('Answer updated successfully!', 'OK',{duration:3000})
+        this.snackbar.open('Answer updated successfully!', 'OK', {duration: 3000})
       })
-      this.router.navigate(['/answer-list/' +  this.question_id]);
+      this.router.navigate(['/answer-list/' + this.question_id]);
     } else {
-      console.log(this.answerFormGroup.value)
-      console.log('no ID has been passed')
-      this.snackbar.open('An error occurred!', 'OK',{duration:3000})
+      this.snackbar.open('An error occurred!', 'OK', {duration: 3000})
       this.router.navigate(['/index']);
     }
   }

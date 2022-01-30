@@ -41,14 +41,14 @@ export class UserService {
     this.router.navigate(['/login']);
   }
 
-  hasPermission(permission:string): boolean {
+  hasPermission(permission: string): boolean {
     const token = localStorage.getItem(this.accessTokenLocalStorageKey);
     const decodedToken = this.jwtHelperService.decodeToken(token ? token : '');
-    const permissions = decodedToken? decodedToken.permissions: {};
+    const permissions = decodedToken ? decodedToken.permissions : {};
     return permission in permissions;
   }
 
-  isOwner(user:string): boolean {
+  isOwner(user: string): boolean {
     const token = localStorage.getItem(this.accessTokenLocalStorageKey);
     const decodedToken = this.jwtHelperService.decodeToken(token ? token : '');
     return decodedToken.username == user;

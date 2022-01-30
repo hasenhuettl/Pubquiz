@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {
@@ -26,7 +26,8 @@ export class QuizFormComponent implements OnInit {
 
   quizFormGroup: FormGroup;
   submitButtonText = '';
- // selectedFile: ImageSnippet | undefined;
+
+
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -36,10 +37,10 @@ export class QuizFormComponent implements OnInit {
     private userService: UserService,
   ) {
     this.quizFormGroup = new FormGroup({
-      id: new FormControl(null),
-      quiz_name: new FormControl('',
-        [Validators.required, this.badWordValidator()],
-        [this.nameValidator()]),
+        id: new FormControl(null),
+        quiz_name: new FormControl('',
+          [Validators.required, this.badWordValidator()],
+          [this.nameValidator()]),
       }
     )
   }
@@ -48,7 +49,9 @@ export class QuizFormComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.submitButtonText = 'Update';
-      this.quizService.getQuiz(id).subscribe(quiz => { this.quizFormGroup.patchValue(quiz) });
+      this.quizService.getQuiz(id).subscribe(quiz => {
+        this.quizFormGroup.patchValue(quiz)
+      });
     } else {
       this.submitButtonText = 'Create';
     }
@@ -56,29 +59,21 @@ export class QuizFormComponent implements OnInit {
 
   createOrUpdateQuiz() {
     const id = this.route.snapshot.paramMap.get('id');
-    // const id = this.quizFormGroup.controls['id'].value
-    //console.log(id)
     if (id) {
-     // console.log(this.quizFormGroup.value)
       this.quizService.updateQuiz(this.quizFormGroup.value).subscribe(() => {
-       this.snackbar.open('Quiz updated successfully!', 'OK',{duration:3000})
+        this.snackbar.open('Quiz updated successfully!', 'OK', {duration: 3000})
       })
       this.router.navigate(['/index']);
     } else {
-      //console.log(this.quizFormGroup.value)
-      console.log(this.userService.getUsername())
       this.quizFormGroup.value.created_by_user = this.userService.getUsername()
-      //console.log(this.quizFormGroup.value)
       this.quizService.createQuiz(this.quizFormGroup.value).subscribe(() => {
-        this.snackbar.open('Quiz created successfully!', 'OK',{duration:3000})
+        this.snackbar.open('Quiz created successfully!', 'OK', {duration: 3000})
       })
-      //console.log(this.quizFormGroup.value)
       this.router.navigate(['/index']);
     }
   }
 
 
-  // Validators
   nameValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       return this.quizService.getQuizzes().pipe(map(quizzes => {
@@ -89,13 +84,12 @@ export class QuizFormComponent implements OnInit {
       }))
     }
   }
+
   badWordValidator(): ValidatorFn {
     return (control: AbstractControl) => {
       const forbidden = /bad word/.test(control.value);
       return forbidden ? {'badWord': {value: control.value}} : null;
     }
   }
-
-
 }
 

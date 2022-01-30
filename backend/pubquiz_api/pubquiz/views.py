@@ -14,7 +14,7 @@ from django.contrib.auth.models import User
 
 # Quiz:
 class QuizViewSet(viewsets.ViewSet):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticated]
     queryset = models.Quiz.objects.all()
 
     # GET: http://127.0.0.1:8000/quiz/

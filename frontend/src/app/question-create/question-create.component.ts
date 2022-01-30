@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
@@ -46,15 +46,12 @@ export class QuestionCreateComponent implements OnInit {
     if (this.route.snapshot.paramMap.get('id')) {
       this.quiz_id = this.route.snapshot.paramMap.get('id')!;
     }
-    console.log(this.createFormGroup.value)
     this.questionService.createQuestion(this.createFormGroup.value).subscribe(() => {
       this.snackbar.open('Question created successfully!', 'OK', {duration: 3000})
     })
-    //console.log(this.questionFormGroup.value)
     this.router.navigate(['/question-list/' + this.quiz_id]);
   }
 
-  // Validators
   nameValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       return this.questionService.getQuestions().pipe(map(questions => {

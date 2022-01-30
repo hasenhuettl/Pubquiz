@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
@@ -18,7 +18,7 @@ export class QuestionFormComponent implements OnInit {
 
   questionFormGroup: FormGroup
   submitButtonText = '';
-  quiz_id ='';
+  quiz_id = '';
 
   constructor(
     private http: HttpClient,
@@ -29,11 +29,11 @@ export class QuestionFormComponent implements OnInit {
     private snackbar: MatSnackBar,
   ) {
     this.questionFormGroup = new FormGroup({
-      id: new FormControl(null),
-      question_string: new FormControl('', [Validators.required], [this.nameValidator()]),
-      master_answer: new FormControl(''),
-      created_by_user: new FormControl(''),
-      quiz: new FormControl(),
+        id: new FormControl(null),
+        question_string: new FormControl('', [Validators.required], [this.nameValidator()]),
+        master_answer: new FormControl(''),
+        created_by_user: new FormControl(''),
+        quiz: new FormControl(),
       }
     )
   }
@@ -42,8 +42,7 @@ export class QuestionFormComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.submitButtonText = 'Update';
-      this.questionService.getQuestion(id).subscribe(question =>
-      {
+      this.questionService.getQuestion(id).subscribe(question => {
         this.questionFormGroup.patchValue(question)
         this.quiz_id = this.questionFormGroup.controls['quiz'].value.id
       });
@@ -55,22 +54,19 @@ export class QuestionFormComponent implements OnInit {
   updateQuestion() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-       this.quiz_id = this.questionFormGroup.controls['quiz'].value.id
-      console.log(this.questionFormGroup.value)
+      this.quiz_id = this.questionFormGroup.controls['quiz'].value.id
+
       this.questionService.updateQuestion(this.questionFormGroup.value).subscribe(() => {
-        this.snackbar.open('Question updated successfully!', 'OK',{duration:3000})
+        this.snackbar.open('Question updated successfully!', 'OK', {duration: 3000})
       })
       this.router.navigate(['/question-list/' + this.quiz_id]);
     } else {
-      console.log(this.questionFormGroup.value)
-      console.log('no ID has been passed')
-      this.snackbar.open('An error occurred!', 'OK',{duration:3000})
+
+      this.snackbar.open('An error occurred!', 'OK', {duration: 3000})
       this.router.navigate(['/index']);
     }
   }
 
-
-  // Validators
   nameValidator(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       return this.questionService.getQuestions().pipe(map(questions => {
@@ -84,5 +80,4 @@ export class QuestionFormComponent implements OnInit {
       }))
     }
   }
-
 }

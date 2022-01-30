@@ -6,11 +6,10 @@ import {UserService} from "./services/user.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent  {
+export class AppComponent {
   isLoggedIn = false;
   title = 'Pubquiz';
 
   constructor(public userService: UserService) {
   }
-
 }

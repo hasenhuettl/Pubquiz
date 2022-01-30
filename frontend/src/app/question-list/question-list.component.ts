@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Question, QuestionService} from "../services/question.service";
 import {FormControl} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
@@ -21,15 +21,16 @@ export class QuestionListComponent implements OnInit {
   constructor(private questionService: QuestionService,
               private route: ActivatedRoute,
               private userService: UserService,
-  ) {  }
+  ) {
+  }
 
   ngOnInit(): void {
-    if(this.route.snapshot.paramMap.get('id') != null) {
+    if (this.route.snapshot.paramMap.get('id') != null) {
       this.id = this.route.snapshot.paramMap.get('id')!;
     }
 
     this.questionService.getQuestions().subscribe((response) => {
-      //console.log({response})
+
       this.questions = response
       this.filter(this.question.question_string);
     })
@@ -37,26 +38,24 @@ export class QuestionListComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.filterFormControl.setValue(params.get('filter'))
     });
-}
+  }
 
   filter(filterValue: string) {
-    console.log()
-    if(this.id != '') {
+    if (this.id != '') {
       this.filteredQuestions = this.questions.filter(a => {
-        console.log(a)
-        return (!filterValue || a.question_string.toLowerCase().includes(filterValue.toLowerCase()))
-                && ( a.quiz.id.toString() == this.id )
+          return (!filterValue || a.question_string.toLowerCase().includes(filterValue.toLowerCase()))
+            && (a.quiz.id.toString() == this.id)
         }
       )
     } else {
       this.filteredQuestions = this.questions.filter(a => {
-        return !filterValue || a.question_string.toLowerCase().includes(filterValue.toLowerCase())
-      }
+          return !filterValue || a.question_string.toLowerCase().includes(filterValue.toLowerCase())
+        }
       )
     }
   }
 
-  isAllowed(user: string): boolean{
+  isAllowed(user: string): boolean {
     return this.userService.isOwner(user) || this.userService.hasPermission('pubquiz.delete_quiz')
   }
 

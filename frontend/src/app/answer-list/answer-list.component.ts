@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
 import {Answer, AnswerService} from "../services/answer.service";
 import {ActivatedRoute} from "@angular/router";
 import {Question} from "../services/question.service";
@@ -18,13 +17,11 @@ export class AnswerListComponent implements OnInit {
   filteredAnswers: Answer[] = [];
   id = '';
   quiz_id = '';
-
   question: any | Question = {};
 
   constructor(private answerService: AnswerService,
               private route: ActivatedRoute,
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     if (this.route.snapshot.paramMap.get('id') != null) {
@@ -52,13 +49,12 @@ export class AnswerListComponent implements OnInit {
         }
       )
     }
-    console.log(this.filteredAnswers)
   }
 
   deleteAnswer(answer: Answer) {
     this.answerService.deleteAnswer(answer).subscribe(() => {
       this.ngOnInit()
-    });//?
+    })
   }
 
   confirmDelete(answer: Answer) {
@@ -66,5 +62,4 @@ export class AnswerListComponent implements OnInit {
       this.deleteAnswer(answer)
     }
   }
-
 }

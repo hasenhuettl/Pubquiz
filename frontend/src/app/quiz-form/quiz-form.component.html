@@ -18,8 +18,8 @@
   <!-- Submit Button/Back Button-->
   <mat-card-actions align="start">
     <button mat-raised-button color="primary" [disabled]="!quizFormGroup.valid">  <!--{{ submitButtonText }}-->
-    <span *ngIf="!quizFormGroup.controls.id.value">Create</span>
-    <span *ngIf="quizFormGroup.controls.id.value">Update</span>
+      <span *ngIf="!quizFormGroup.controls.id.value">Create</span>
+      <span *ngIf="quizFormGroup.controls.id.value">Update</span>
     </button>
     <button mat-raised-button type="button" color="warn" [routerLink]="'/index/'">Back</button>
   </mat-card-actions>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AbstractControl, AsyncValidatorFn, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -44,12 +44,10 @@ export class AnswerCreateComponent implements OnInit {
   }
 
   createAnswer() {
-    console.log(this.userService.getUsername())
     this.answerFormGroup.value.created_by_user = this.userService.getUsername()
     if (this.route.snapshot.paramMap.get('id')) {
       this.question_id = this.route.snapshot.paramMap.get('id')!;
     }
-    console.log(this.answerFormGroup.value)
     this.answerService.createAnswer(this.answerFormGroup.value).subscribe(() => {
       this.snackbar.open('Answer created successfully!', 'OK', {duration: 3000})
     })
