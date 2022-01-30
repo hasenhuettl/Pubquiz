@@ -24,10 +24,10 @@ Click on the link to see the proposal: <a href="https://fhjoanneum-my.sharepoint
    - Libraries: Material Design (https://material.angular.io/)
    - Additional Requirements: NodeJS (https://nodejs.org/en/download/)
    - Server: 
-                  * Run "ng serve" for a dev server. 
-                  * Navigate to http://localhost:4200/
-                  * Run "ng build" to build the project.
-                  * For more help on the Angular CLI use "ng help".  
+                  Run "ng serve" for a dev server. > 
+                  Navigate to http://localhost:4200/ >
+                  Run "ng build" to build the project. >
+                  For more help on the Angular CLI use "ng help".  
           
     
    ### Backend: 
